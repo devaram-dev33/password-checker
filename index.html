@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Password Strength Checker - By Deva Ram</title>
+<style>
+body{font-family:Arial;background:#0f172a;color:white;display:flex;justify-content:center;align-items:center;height:100vh}
+.box{background:#1e293b;padding:30px;border-radius:15px;width:320px;text-align:center}
+input{width:90%;padding:12px;border-radius:8px;border:none;margin-top:15px;font-size:16px}
+#strength{margin-top:15px;font-weight:bold;font-size:18px}
+.weak{color:#ef4444} .medium{color:#f59e0b} .strong{color:#22c55e}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>Password Checker</h2>
+<p>A Smart Tool by Deva Ram</p>
+<input type="password" id="pass" placeholder="Enter Password" onkeyup="check()">
+<div id="strength">Enter Password</div>
+</div>
+<script>
+function check(){
+let p=document.getElementById("pass").value;
+let s=document.getElementById("strength");
+if(p.length<4){s.innerHTML="Weak Password 🔴";s.className="weak";}
+else if(p.length<8){s.innerHTML="Medium Password 🟡";s.className="medium";}
+else if(p.match(/[A-Z]/) && p.match(/[0-9]/) && p.match(/[!@#$%^&*]/)){s.innerHTML="Strong Password 🟢";s.className="strong";}
+else{s.innerHTML="Good, Make it Stronger";s.className="medium";}
+}
+</script>
+</body>
+</html>
