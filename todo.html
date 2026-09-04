@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deva To-Do - Daily Kaam</title>
+<style>
+body{ background:#0f0f0f; color:white; font-family:Arial; text-align:center; padding:20px; }
+h1{ color:#FFD700; }
+.box{ background:#1a1a1a; padding:20px; border-radius:15px; border:1px solid #FFD700; }
+input{ width:70%; padding:12px; border-radius:10px; border:none; font-size:16px; }
+.addBtn{ background:#FFD700; color:black; padding:12px 15px; border:none; border-radius:10px; font-weight:bold; margin-left:5px; }
+ul{ list-style:none; padding:0; text-align:left; }
+li{ background:#222; padding:12px; margin-top:10px; border-radius:10px; display:flex; justify-content:space-between; }
+.done{ text-decoration: line-through; color:#888; }
+.del{ background:red; color:white; border:none; border-radius:5px; padding:5px 10px; }
+</style>
+</head>
+<body>
+<h1>Deva To-Do List 📝</h1>
+<div class="box">
+<input type="text" id="task" placeholder="Aaj kya kaam hai?">
+<button class="addBtn" onclick="addTask()">Add</button>
+<ul id="list"></ul>
+</div>
+<p style="color:#888; margin-top:20px;">Made in Rajasthan ❤️ by Deva</p>
+<script>
+let tasks = JSON.parse(localStorage.getItem("devaTasks") || "[]");
+function show(){
+ let l = document.getElementById("list"); l.innerHTML="";
+ tasks.forEach((t,i)=>{
+   l.innerHTML += `<li><span class="${t.done?'done':''}" onclick="toggle(${i})">${t.text}</span> <button class="del" onclick="del(${i})">X</button></li>`;
+ });
+ localStorage.setItem("devaTasks", JSON.stringify(tasks));
+}
+function addTask(){
+ let v = document.getElementById("task").value;
+ if(!v) return alert("Pehle kaam likh Deva!");
+ tasks.push({text:v, done:false});
+ document.getElementById("task").value=""; show();
+}
+function toggle(i){ tasks[i].done =!tasks[i].done; show(); }
+function del(i){ tasks.splice(i,1); show(); }
+show();
+</script>
+</body>
+  </html>
