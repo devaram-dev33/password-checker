@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Clock - Deva</title>
+<style>
+body{margin:0;height:100vh;background:#000;display:flex;flex-direction:column;justify-content:center;align-items:center;color:white;font-family:monospace}
+#time{font-size:70px;font-weight:bold;color:#00ff88;text-shadow:0 0 20px #00ff88;letter-spacing:5px}
+#date{font-size:20px;margin-top:10px;color:#aaa}
+h2{color:#555;letter-spacing:10px}
+</style>
+</head>
+<body>
+<h2>DEVA'S CLOCK</h2>
+<div id="time">00:00:00</div>
+<div id="date">Loading...</div>
+<script>
+function update(){
+let now=new Date();
+let h=String(now.getHours()).padStart(2,'0');
+let m=String(now.getMinutes()).padStart(2,'0');
+let s=String(now.getSeconds()).padStart(2,'0');
+document.getElementById('time').innerText=`${h}:${m}:${s}`;
+document.getElementById('date').innerText=now.toDateString();
+}
+setInterval(update,1000); update();
+</script>
+</body>
+</html>
