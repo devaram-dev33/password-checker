@@ -1,1 +1,35 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Deva Shield</title><style>body{font-family:Arial;background:linear-gradient(135deg,#0f172a,#1e1b4b);display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;padding:15px}.box{background:#1e293bcc;backdrop-filter:blur(10px);padding:30px;border-radius:20px;max-width:400px;width:100%;border:1px solid #facc1550;color:#fff;box-shadow:0 0 30px #0005}.logo{width:60px;height:60px;background:linear-gradient(135deg,#facc15,#f59e0b);border-radius:15px;display:flex;justify-content:center;align-items:center;font-size:32px;font-weight:900;color:#000;margin:0 auto;box-shadow:0 0 20px #facc1580}h2{text-align:center;color:#fff;margin:10px 0 2px;font-size:22px}h2 span{color:#facc15}.sub{text-align:center;color:#94a3b8;font-size:11px;margin-bottom:20px;letter-spacing:2px}input{width:100%;padding:14px;border-radius:12px;border:2px solid #334155;background:#0f172a;color:#fff;margin-top:5px;font-size:16px;box-sizing:border-box;outline:none}.bar{height:14px;background:#334155;border-radius:20px;margin-top:18px;overflow:hidden}#fill{height:100%;width:0%;border-radius:20px;transition:0.5s}.foot{text-align:center;margin-top:18px;font-size:11px;color:#64748b}.foot b{color:#facc15}</style></head><body><div class="box"><div class="logo">D</div><h2>Deva <span>SHIELD</span> 🛡️</h2><p class="sub">PASSWORD STRENGTH CHECKER</p><input id="pass" placeholder="🔑 Apna Password likho..." onkeyup="check()"><div class="bar"><div id="fill"></div></div><p id="s" style="margin-top:10px;font-size:14px">Strength...</p><p id="c" style="font-size:13px;color:#94a3b8">⏱️ Crack Time: -</p><div style="background:#0f172a;padding:12px;border-radius:12px;margin-top:12px;font-size:13px;border-left:4px solid #facc15" id="t">💡 Tip: Password likho</div><div class="foot">Made with ❤️ in <b>Rajasthan</b> by Deva Ram</div></div><script>function check(){let a=document.getElementById('pass').value;let b=document.getElementById('fill');let s1=document.getElementById('s');let c1=document.getElementById('c');let t1=document.getElementById('t');if(!a){b.style.width='0%';s1.innerText='Strength...';c1.innerText='⏱️ Crack Time: -';t1.innerText='💡 Tip: Password likho';return}let e=0;if(a.length>=6)e++;if(a.length>=8)e++;if(a.length>=12)e++;if(/[A-Z]/.test(a))e++;if(/[0-9]/.test(a))e++;if(/[^A-Za-z0-9]/.test(a))e++;if(e<=2){b.style.width='25%';b.style.background='#ef4444';s1.innerHTML='<b style=color:#ef4444>WEAK ❌ - 2 min me hack</b>';c1.innerHTML='⏱️ <b>Crack: 2 minute</b>';t1.innerHTML='🔧 Strong kaise?<br>• 12 akshar likho<br>• A-Z jodo<br>• @#$ jodo'}else if(e<=4){b.style.width='65%';b.style.background='#f59e0b';s1.innerHTML='<b style=color:#f59e0b>MEDIUM ⚠️ - 3 din me hack</b>';c1.innerHTML='⏱️ <b>Crack: 3-4 din</b>';t1.innerHTML='🔧 Bas @#$ jod do, Strong ho jayega!'}else{b.style.width='100%';b.style.background='#22c55e';s1.innerHTML='<b style=color:#22c55e>STRONG ✅ - 100+ Saal Safe</b>';c1.innerHTML='⏱️ <b>Crack: 100+ Saal</b>';t1.innerHTML='✅ Perfect! Ekdam Safe hai.'}}</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deva's Projects</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#0f0f0f;color:white;padding:20px}
+h1{text-align:center;margin:20px 0;font-size:40px;color:#00ff88}
+p{text-align:center;color:#aaa;margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:1000px;margin:auto}
+.card{background:#1a1a1a;padding:25px;border-radius:20px;text-align:center;border:1px solid #333;transition:0.3s;text-decoration:none;color:white;display:block}
+.card:hover{transform:translateY(-8px);border-color:#00ff88;box-shadow:0 10px 30px rgba(0,255,136,0.2)}
+.card h2{font-size:22px;margin:15px 0}
+.card span{font-size:50px}
+.btn{background:#00ff88;color:black;padding:10px 20px;border-radius:20px;display:inline-block;margin-top:10px;font-weight:bold}
+</style>
+</head>
+<body>
+<h1>DEVA'S WORKSPACE 🚀</h1>
+<p>7 Projects Live - Made by Devaram in Ajmer</p>
+
+<div class="grid">
+<a class="card" href="password.html"><span>🔐</span><h2>Password Checker</h2><div class="btn">Open</div></a>
+<a class="card" href="qr.html"><span>📱</span><h2>QR Generator</h2><div class="btn">Open</div></a>
+<a class="card" href="todo.html"><span>✅</span><h2>Todo List</h2><div class="btn">Open</div></a>
+<a class="card" href="calc.html"><span>🧮</span><h2>Calculator</h2><div class="btn">Open</div></a>
+<a class="card" href="weather.html"><span>⛅</span><h2>Weather App</h2><div class="btn">Open</div></a>
+<a class="card" href="age.html"><span>🎂</span><h2>Age Calculator</h2><div class="btn">Open</div></a>
+<a class="card" href="clock.html"><span>⏰</span><h2>Peace Clock</h2><div class="btn">Open</div></a>
+</div>
+
+<p style="margin-top:40px">© 2026 Devaram | Ajmer, Rajasthan</p>
+</body>
+</html>
