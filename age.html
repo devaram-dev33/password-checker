@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator - Deva</title>
+<style>
+body{font-family:Arial;background:#0f0c29;background:linear-gradient(to right,#24243e,#302b63,#0f0c29);height:100vh;display:flex;justify-content:center;align-items:center;margin:0;color:white}
+.box{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:30px;border-radius:20px;width:300px;text-align:center}
+input{width:90%;padding:12px;border-radius:10px;border:none;margin:15px 0;font-size:16px}
+button{padding:12px 25px;border:none;background:#ff5e62;color:white;border-radius:10px;font-size:16px;cursor:pointer;width:100%}
+#result{margin-top:20px;font-size:18px;background:rgba(0,0,0,0.3);padding:15px;border-radius:10px}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>🎂 Age Calculator</h2>
+<p>Apni DOB Daal</p>
+<input type="date" id="dob">
+<button onclick="calcAge()">Calculate Age</button>
+<div id="result">Result yaha ayega</div>
+</div>
+<script>
+function calcAge(){
+let dob=new Date(document.getElementById('dob').value);
+if(!dob.getTime()){document.getElementById('result').innerText='Date select kar Deva!'; return;}
+let today=new Date();
+let age=today.getFullYear()-dob.getFullYear();
+let m=today.getMonth()-dob.getMonth();
+if(m<0 || (m===0 && today.getDate()<dob.getDate())){age--;}
+let months=Math.abs(m); if(months==12) months=0;
+document.getElementById('result').innerHTML=`Tu <b>${age} saal</b> ka hai Deva!<br> <small>${months} mahine extra</small>`;
+}
+</script>
+</body>
+  </html>
