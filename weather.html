@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather - Deva</title>
+<style>
+body{font-family:Arial;background:linear-gradient(135deg,#4facfe,#00f2fe);height:100vh;display:flex;justify-content:center;align-items:center;margin:0}
+.card{background:white;padding:25px;border-radius:20px;width:300px;text-align:center;box-shadow:0 15px 30px rgba(0,0,0,0.2)}
+input{width:70%;padding:10px;border-radius:10px;border:1px solid #ccc}
+button{padding:10px 15px;border:none;background:#4facfe;color:white;border-radius:10px;cursor:pointer;margin-left:5px}
+#temp{font-size:48px;font-weight:bold;margin:15px 0}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>🌤️ Mausam App</h2>
+<div><input id="city" value="Ajmer"><button onclick="getWeather()">Search</button></div>
+<h3 id="cityName">Ajmer</h3>
+<div id="temp">--°C</div>
+<p id="desc">Loading...</p>
+</div>
+<script>
+async function getWeather(){
+let city=document.getElementById('city').value;
+document.getElementById('cityName').innerText=city;
+// Ajmer lat long default
+let lat=26.4499; let lon=74.6399;
+if(city.toLowerCase()!='ajmer'){ lat=28.61; lon=77.23; } // simple logic
+let url=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+let res=await fetch(url);
+let data=await res.json();
+document.getElementById('temp').innerText=data.current_weather.temperature+'°C';
+document.getElementById('desc').innerText='Wind: '+data.current_weather.windspeed+' km/h';
+}
+getWeather();
+</script>
+</body>
+</html>
