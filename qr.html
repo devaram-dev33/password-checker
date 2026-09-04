@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deva QR - Made in Rajasthan</title>
+<style>
+body{ background:#0f0f0f; color:white; font-family:Arial; text-align:center; padding:20px; }
+h1{ color:#FFD700; }
+input{ width:90%; padding:15px; border-radius:10px; border:2px solid #FFD700; font-size:16px; }
+button{ background:#FFD700; color:black; padding:12px 30px; border:none; border-radius:10px; font-weight:bold; margin-top:15px; font-size:18px; }
+#qrBox{ margin-top:25px; background:white; padding:20px; border-radius:15px; display:none; }
+#qrImg{ width:200px; }
+</style>
+</head>
+<body>
+<h1>Deva QR Generator 🛡️</h1>
+<input type="text" id="qrText" placeholder="Yaha link ya text likho...">
+<br>
+<button onclick="makeQR()">QR Banao</button>
+<div id="qrBox">
+<img id="qrImg" src="">
+<br><br>
+<a id="downloadLink" download="Deva-QR.png"><button>Download Karo</button></a>
+</div>
+<p style="margin-top:30px; color:#888;">Made in Rajasthan ❤️ by Deva</p>
+<script>
+function makeQR(){
+ let text = document.getElementById("qrText").value;
+ if(text==""){ alert("Pehle kuch likho Deva!"); return; }
+ let url = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(text);
+ document.getElementById("qrImg").src = url;
+ document.getElementById("downloadLink").href = url;
+ document.getElementById("qrBox").style.display = "inline-block";
+}
+</script>
+</body>
+</html>
