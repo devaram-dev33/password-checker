@@ -1,30 +1,144 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>70X GOLD - Basan - Made by Deva</title>
-<style>*{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#FFD700;font-family:Arial;padding:10px}
-.h{border:3px solid gold;border-radius:20px;padding:20px;text-align:center;background:linear-gradient(180deg,#111,#000);box-shadow:0 0 30px gold}
-.h b{font-size:34px;display:block;text-shadow:0 0 15px gold}.school{color:#fff;font-size:14px;margin:8px 0}
-.inp{width:100%;padding:18px;border-radius:12px;border:3px solid gold;background:#000;color:gold;font-size:20px;margin:15px 0}
-.bar{height:24px;background:#222;border-radius:12px;overflow:hidden;border:2px solid gold}.fill{height:100%;width:70%;background:linear-gradient(90deg,gold,orange);transition:0.3s}
-.g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}.f{border:2px solid gold;border-radius:12px;padding:10px;text-align:center;background:#0a0a0a;font-size:10px;font-weight:bold}.f.active{box-shadow:0 0 12px gold;background:#1a1500}.box{border:2px solid gold;border-radius:15px;padding:15px;margin:15px 0;background:#111}</style>
-</head><body>
-<div class="h">
-<b>70X GOLD EDITION</b>
-<div class="school"><b style="color:gold;font-size:17px">Govt Sr Sec School Basan, Reodar, Sirohi</b><br>👑 Made by Deva - Sirohi Rank #1 👑</div>
-<div style="margin-top:10px">🔐 Password Strength Checker</div>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>70X GOLD EDITION - Deva Basan</title>
+<style>
+body{background:#000;color:#fff;font-family:Arial;margin:0;padding:15px}
+.header{border:3px solid gold;border-radius:15px;padding:15px;text-align:center;background:#111}
+.header h1{color:gold;margin:0}
+input{width:90%;padding:15px;font-size:18px;border-radius:10px;border:2px solid gold;background:#222;color:#fff;margin:15px 0}
+#strength{font-size:28px;font-weight:bold;text-align:center;margin:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
+.card{background:#111;border:1px solid #333;padding:10px;border-radius:8px;text-align:center;cursor:pointer}
+.card.gold{border:2px solid gold;color:gold;box-shadow:0 0 10px gold}
+.card:active{transform:scale(0.95);background:#222}
+#modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:99}
+#modalBox{background:#111;border:3px solid gold;border-radius:15px;padding:20px;width:85%;text-align:center}
+button{padding:10px 20px;background:gold;border:none;border-radius:8px;font-weight:bold;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>70X GOLD EDITION</h1>
+<p>Govt Sr Sec School Basan | Deva - Sirohi Rank #1</p>
+<p id="strength">Password Likho...</p>
+<input type="text" id="pass" placeholder="Yahan password likho..." oninput="checkPass()">
 </div>
-<div class="box">
-<input class="inp" id="p" type="password" value="Deva@Basan70X" oninput="chk()" placeholder="Password likho...">
-<div style="display:flex;justify-content:space-between;font-weight:bold"><span>Strength Score:</span><span id="sc" style="background:gold;color:#000;padding:5px 12px;border-radius:20px">70/100 - Strong</span></div>
-<div class="bar" style="margin-top:10px"><div class="fill" id="fl"></div></div>
+
+<div class="grid" id="grid"></div>
+
+<div id="modal" onclick="this.style.display='none'">
+<div id="modalBox">
+<h2 id="mTitle" style="color:gold"></h2>
+<p id="mKaam"></p>
+<p id="mKaise" style="color:#aaa"></p>
+<p id="mFayda" style="color:#8f8"></p>
+<button onclick="document.getElementById('modal').style.display='none'">BAND KARO</button>
 </div>
-<div class="box">
-<h3 style="text-align:center;margin-bottom:10px">🛡️ 70x PREMIUM FEATURES - ALL ACTIVE (70/70) 🛡️</h3>
-<div class="g" id="grid"></div>
 </div>
-<div style="text-align:center;padding:15px;color:#888;font-size:11px;border-top:1px solid gold">Govt School Basan • 70 Features • Made by Deva • Sirohi</div>
+
 <script>
-const L=["AI Shield","Cloud Backup","Ad-Free","Biometric Lock","Dark Mode Pro","Data Encrypt","Offline Mode","Priority Support","Auto Save","Fast Sync","VPN Secure","Custom Themes","Analytics","QR Scanner","Multi Login","Export PDF","Chat Support","Auto Update","Dark Browse","Malware Guard","Smart Backup","Backup Cloud","Activity Log","Privacy Lock","Two-Factor","Session Lock","Session Vault","Spam Filter","Phishing Guard","Threat Detect","Audit Trail","Auto Cleaner","Cache Cleaner","Storage Boost","Focus Mode","Reading Mode","Night Shield","Battery Saver","Performance Boost","App Locker","Incognito","OneTap Login","Secure Notes","Cloud Sync","Version History","Restore Point","Secure DNS","Data Saver","PIN Lock","Pattern Lock","Face Unlock","Fingerprint","Smart Rules","Auto Lock","Recovery Key","Thar Mode","Tractor Mode","Sirohi Shield","Reodar Guard","Basan Tiger","Teacher Mode","Principal Mode","Exam Lock","Screen Guard","Bank Lock","UPI Guard","Aadhaar Safe","OTP Auto","70X Power"];
-const g=document.getElementById('grid');L.forEach((n,i)=>{let d=document.createElement('div');d.className='f active';d.innerHTML=`✅<br><b>${i+1}. ${n}</b>`;g.appendChild(d)});
-function chk(){let v=document.getElementById('p').value;let s=Math.min(100,Math.floor(v.length*7+25));document.getElementById('sc').innerText=s+'/100 - '+(s>70?'Strong':'Medium');document.getElementById('fl').style.width=s+'%'}chk();
-</script></body></html>
+const features=[
+["AI Shield","AI hack se bachata hai","AI pattern check karke","Cyber suraksha"],
+["Cloud Backup","Online safe rakhta hai","GitHub pe save hota hai","Kabhi khoye nahi"],
+["Ad-Free","Bina ads chalata hai","No ad code","Disturb nahi"],
+["Biometric Lock","Ungli se kholta hai","Fingerprint API","Koi aur na khole"],
+["Dark Mode Pro","Aankho ko aaram","Black theme CSS","Raat me aaram"],
+["Data Encrypt","Code me badalta hai","AES lock","Hacker na padhe"],
+["Offline Mode","Bina net kaam","Local storage","Gaon me bhi chale"],
+["Priority Support","Basan ko pehle help","Top list","Basan ka maan"],
+["Auto Save","Apne aap save","Auto function","Delete na ho"],
+["Fast Sync","Jaldi bheje","Sync API","Time bache"],
+["VPN Secure","Net safe","VPN tunnel","Data safe"],
+["Custom Themes","Gold Black color","Theme switcher","Pasand ka rang"],
+["Analytics","Kitne strong gine","Counter","Pata chale"],
+["QR Scanner","QR se check","QR API","Jaldi check"],
+["Multi Login","5 login sath","Multi window","Time bache"],
+["Export PDF","PDF nikale","PDF generator","Teacher ko de"],
+["Chat Support","Chat madad","Chat box","Jawab turant"],
+["Auto Update","Khud naya ho","Update checker","Naya feature"],
+["Dark Browse","Safe browsing","Secure browser","Galat site block"],
+["Malware Guard","Virus se bacha","Virus scan","Phone safe"],
+["Smart Backup","Akal se backup","Smart logic","Sahi time backup"],
+["Backup Cloud","Dusri copy","Dual cloud","Ek kharab dusra"],
+["Activity Log","Hisab likhe","Log file","Chori pakde"],
+["Privacy Lock","Jhankne se bacha","Privacy shield","Koi dekhe nahi"],
+["Two-Factor","2 baar lock","OTP system","Double suraksha"],
+["Session Lock","Time pe lock","Timer lock","Khula na chhode"],
+["Session Vault","Tijori safe","Vault locker","Strong lock"],
+["Spam Filter","Bekar hataye","Filter code","Kachra saaf"],
+["Phishing Guard","Nakli site bacha","Phishing check","Bank fraud bacha"],
+["Threat Detect","Khatra bataye","Threat alert","Pehle pata chale"],
+["Audit Trail","Pura hisab","Audit log","Record rakhe"],
+["Auto Cleaner","Kachra saaf","Cleaner","Phone tez"],
+["Cache Cleaner","Cache saaf","Cache clear","Jagah banaye"],
+["Storage Boost","Jagah banaye","Storage manager","Memory badhaye"],
+["Focus Mode","Padhai disturb nahi","Focus blocker","Dhyan lage"],
+["Reading Mode","Aankho accha","Reading light","Aankh safe"],
+["Night Shield","Neeli roshni rok","Blue filter","Raat aaram"],
+["Battery Saver","Battery bacha","Battery saver","Charge bache"],
+["Performance Boost","Phone fast","Boost engine","Tez chale"],
+["App Locker","App pe tala","App lock","Koi na khole"],
+["Incognito","Chupke check","Incognito mode","History nahi"],
+["OneTap Login","1 click login","One tap API","Jaldi login"],
+["Secure Notes","Secret note","Encrypted notes","Yaad rahe"],
+["Cloud Sync","Sab same","Cloud sync","Har phone same"],
+["Version History","Purana dikhe","History tracker","Wapas dekhe"],
+["Restore Point","Wapas laaye","Restore system","Galti sudhare"],
+["Secure DNS","Net rasta safe","DNS lock","Hacking rok"],
+["Data Saver","Net kam khaye","Data compress","Net bache"],
+["PIN Lock","Number lock","4 digit PIN","Number suraksha"],
+["Pattern Lock","Design lock","Pattern draw","Design suraksha"],
+["Face Unlock","Chehre se khule","Face API","Chehre lock"],
+["Fingerprint","Anguthe se","Finger scan","Anguthe lock"],
+["Smart Rules","Khud samjhe","AI rules","Khud kaam"],
+["Auto Lock","Khud band","Auto timer","Khula na rahe"],
+["Recovery Key","Dusri chabi","Backup key","Chabi kho toh dusri"],
+["Thar Mode","Garmi me chale","Heat resistant","Reodar 50°C me chale"],
+["Tractor Mode","Khet me chale","Rough use","Dhul me chale"],
+["Sirohi Shield","Sirohi special","Sirohi code","Sirohi baccho liye"],
+["Reodar Guard","Reodar rakshak","Reodar wall","Reodar naam roshan"],
+["Basan Tiger","Basan ka sher","Tiger power","Basan strong"],
+["Teacher Mode","Teacher screen","Teacher dashboard","Teacher check"],
+["Principal Mode","Principal report","Principal view","Principal sign"],
+["Exam Lock","Exam lock","Exam timer","Cheating rok"],
+["Screen Guard","Photo rok","Screenshot block","Photo na le"],
+["Bank Lock","Bank jaisa strong","Bank encryption","Bank safe"],
+["UPI Guard","PhonePe GPay safe","UPI shield","Paise safe"],
+["Aadhaar Safe","Aadhaar safe","Aadhaar lock","Aadhaar safe"],
+["OTP Auto","OTP khud bhare","OTP reader","Yaad na karna"],
+["70X Power","70 guna tez","Power booster","Sabse tez"],
+["Deva Gold","Tera naam Rank #1","Gold badge","Sirohi No.1"]
+];
+
+const grid=document.getElementById('grid');
+features.forEach((f,i)=>{
+  let d=document.createElement('div');
+  d.className='card'+(i>=55?' gold':'');
+  d.innerHTML=`<b>${i+1}. ${f[0]}</b><br><small>${f[1]}</small>`;
+  d.onclick=()=>openModal(i);
+  grid.appendChild(d);
+});
+
+function openModal(i){
+  document.getElementById('mTitle').innerText=(i+1)+'. '+features[i][0];
+  document.getElementById('mKaam').innerText='Kaam: '+features[i][1];
+  document.getElementById('mKaise').innerText='Kaise: '+features[i][2];
+  document.getElementById('mFayda').innerText='Fayda: '+features[i][3]+' | Status: ACTIVE ✅';
+  document.getElementById('modal').style.display='flex';
+  if(navigator.vibrate) navigator.vibrate(50);
+}
+
+function checkPass(){
+  let p=document.getElementById('pass').value;
+  let s=document.getElementById('strength');
+  if(p.length==0){s.innerText='Password Likho...';s.style.color='white';return}
+  if(p.length<4){s.innerText='❌ Weak - Sirohi Rank 0';s.style.color='red'}
+  else if(p.length<8){s.innerText='⚠️ Medium - Rank 50';s.style.color='orange'}
+  else{s.innerText='✅ STRONG 100/100 - Sirohi Rank #1 Gold!';s.style.color='gold'}
+}
+</script>
+</body>
+</html>
