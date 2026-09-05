@@ -1,144 +1,43 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>70X GOLD EDITION - Deva Basan</title>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>DEVA • PRIVÉ</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 <style>
-body{background:#000;color:#fff;font-family:Arial;margin:0;padding:15px}
-.header{border:3px solid gold;border-radius:15px;padding:15px;text-align:center;background:#111}
-.header h1{color:gold;margin:0}
-input{width:90%;padding:15px;font-size:18px;border-radius:10px;border:2px solid gold;background:#222;color:#fff;margin:15px 0}
-#strength{font-size:28px;font-weight:bold;text-align:center;margin:10px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}
-.card{background:#111;border:1px solid #333;padding:10px;border-radius:8px;text-align:center;cursor:pointer}
-.card.gold{border:2px solid gold;color:gold;box-shadow:0 0 10px gold}
-.card:active{transform:scale(0.95);background:#222}
-#modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:99}
-#modalBox{background:#111;border:3px solid gold;border-radius:15px;padding:20px;width:85%;text-align:center}
-button{padding:10px 20px;background:gold;border:none;border-radius:8px;font-weight:bold;margin-top:10px}
-</style>
-</head>
-<body>
-<div class="header">
-<h1>70X GOLD EDITION</h1>
-<p>Govt Sr Sec School Basan | Deva - Sirohi Rank #1</p>
-<p id="strength">Password Likho...</p>
-<input type="text" id="pass" placeholder="Yahan password likho..." oninput="checkPass()">
+body{margin:0;background:#000 url('https://www.transparenttextures.com/patterns/black-linen.png');color:#e8dcc6;font-family:'Montserrat',sans-serif}
+.gold-text{background:linear-gradient(180deg,#fff2a8 0%,#e0b85f 20%,#b68c2c 50%,#e0b85f 80%,#fff2a8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Cinzel',serif;filter:drop-shadow(0 0 10px rgba(212,175,55,0.5))}
+.marble{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 30%,#1a1a1a 0%,#000 60%),repeating-linear-gradient(115deg,transparent 0,transparent 2px,#d4af3722 2px,#d4af3733 3px);z-index:-1}
+.container{max-width:430px;margin:0 auto;padding:20px}
+.hero{border:1px solid #d4af37;border-radius:20px;background:linear-gradient(145deg,#0a0a0a,#1a1a1a);padding:30px 20px;text-align:center;box-shadow:0 0 40px rgba(212,175,55,0.15),inset 0 0 20px rgba(212,175,55,0.05);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(120deg,transparent 30%,rgba(212,175,55,0.1) 50%,transparent 70%);transform:rotate(25deg);animation:shine 4s infinite}
+@keyframes shine{0%{transform:translateX(-100%) rotate(25deg)}100%{transform:translateX(100%) rotate(25deg)}}
+h1{font-size:42px;margin:0;letter-spacing:4px}
+.sub{letter-spacing:6px;font-size:10px;color:#d4af37;margin-top:10px}
+.vault{margin-top:25px;border:1px solid #d4af37;background:#000;padding:2px;border-radius:15px}
+.vault-inner{border:1px solid #d4af37aa;border-radius:13px;padding:20px;background:linear-gradient(180deg,#111,#000)}
+input{width:100%;background:transparent;border:none;border-bottom:1px solid #d4af37;color:#fff;font-size:22px;text-align:center;padding:10px;outline:none;letter-spacing:3px}
+.str{margin-top:15px;font-family:'Cinzel';font-size:18px;min-height:25px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+.lux-card{background:linear-gradient(145deg,#0f0f0f,#1c1c1c);border:1px solid #2a2a2a;border-radius:14px;padding:16px;text-align:center;transition:0.4s;cursor:pointer;position:relative}
+.lux-card:hover{border-color:#d4af37;box-shadow:0 0 20px rgba(212,175,55,0.3);transform:translateY(-3px)}
+.lux-card.gold{border:1.5px solid #d4af37;background:linear-gradient(145deg,#1a1608,#0f0e05)}
+.lux-card b{font-family:'Cinzel';font-size:11px;color:#e8dcc6;display:block;margin-bottom:4px}
+.lux-card small{font-size:9px;color:#888}
+.diamond{position:absolute;top:8px;right:8px;width:6px;height:6px;background:#d4af37;transform:rotate(45deg);box-shadow:0 0 6px #d4af37}
+.btn-gold{width:100%;margin-top:30px;background:linear-gradient(180deg,#f3e08a,#d4af37,#a67c00);border:none;border-radius:12px;padding:18px;font-family:'Cinzel';letter-spacing:3px;font-weight:700;color:#000;box-shadow:0 5px 20px rgba(212,175,55,0.4)}
+#pop{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);display:none;justify-content:center;align-items:center;z-index:99;padding:20px}
+#popBox{background:linear-gradient(180deg,#1a1a1a,#000);border:2px solid #d4af37;border-radius:20px;padding:30px;max-width:360px;width:100%;text-align:center;box-shadow:0 0 60px rgba(212,175,55,0.3)}
+</style></head><body><div class="marble"></div>
+<div class="container"><div class="hero">
+<h1 class="gold-text">DÉVÁ</h1><div class="sub">BASAN • PRIVATE • COLLECTION</div>
+<div style="margin:20px 0;font-size:12px;letter-spacing:2px">Your Legacy, Secured — Sirohi</div>
+<div class="vault"><div class="vault-inner">
+<input id="p" type="text" placeholder="ENTER CODE" oninput="chk()"><div class="str" id="st"></div>
+</div></div></div>
+<div class="grid" id="g"></div>
+<button class="btn-gold" onclick="window.open('https://github.com/devaram-dev33/password-checker','_blank')">REQUEST ACCESS • BASAN EDITION</button>
+<p style="text-align:center;font-size:9px;letter-spacing:3px;color:#555;margin-top:15px">EST. 2026 • GOVT SR SEC SCHOOL BASAN • REODAR • SIROHI • RAJASTHAN</p>
 </div>
-
-<div class="grid" id="grid"></div>
-
-<div id="modal" onclick="this.style.display='none'">
-<div id="modalBox">
-<h2 id="mTitle" style="color:gold"></h2>
-<p id="mKaam"></p>
-<p id="mKaise" style="color:#aaa"></p>
-<p id="mFayda" style="color:#8f8"></p>
-<button onclick="document.getElementById('modal').style.display='none'">BAND KARO</button>
-</div>
-</div>
-
+<div id="pop" onclick="this.style.display='none'"><div id="popBox"><h2 id="pt" class="gold-text" style="font-size:22px"></h2><p id="pk"></p><p id="ps" style="color:#777;font-size:13px"></p><p id="pf" style="color:#8f8;font-size:13px"></p><button class="btn-gold" style="margin-top:15px;padding:12px" onclick="document.getElementById('pop').style.display='none'">CLOSE VAULT</button></div></div>
 <script>
-const features=[
-["AI Shield","AI hack se bachata hai","AI pattern check karke","Cyber suraksha"],
-["Cloud Backup","Online safe rakhta hai","GitHub pe save hota hai","Kabhi khoye nahi"],
-["Ad-Free","Bina ads chalata hai","No ad code","Disturb nahi"],
-["Biometric Lock","Ungli se kholta hai","Fingerprint API","Koi aur na khole"],
-["Dark Mode Pro","Aankho ko aaram","Black theme CSS","Raat me aaram"],
-["Data Encrypt","Code me badalta hai","AES lock","Hacker na padhe"],
-["Offline Mode","Bina net kaam","Local storage","Gaon me bhi chale"],
-["Priority Support","Basan ko pehle help","Top list","Basan ka maan"],
-["Auto Save","Apne aap save","Auto function","Delete na ho"],
-["Fast Sync","Jaldi bheje","Sync API","Time bache"],
-["VPN Secure","Net safe","VPN tunnel","Data safe"],
-["Custom Themes","Gold Black color","Theme switcher","Pasand ka rang"],
-["Analytics","Kitne strong gine","Counter","Pata chale"],
-["QR Scanner","QR se check","QR API","Jaldi check"],
-["Multi Login","5 login sath","Multi window","Time bache"],
-["Export PDF","PDF nikale","PDF generator","Teacher ko de"],
-["Chat Support","Chat madad","Chat box","Jawab turant"],
-["Auto Update","Khud naya ho","Update checker","Naya feature"],
-["Dark Browse","Safe browsing","Secure browser","Galat site block"],
-["Malware Guard","Virus se bacha","Virus scan","Phone safe"],
-["Smart Backup","Akal se backup","Smart logic","Sahi time backup"],
-["Backup Cloud","Dusri copy","Dual cloud","Ek kharab dusra"],
-["Activity Log","Hisab likhe","Log file","Chori pakde"],
-["Privacy Lock","Jhankne se bacha","Privacy shield","Koi dekhe nahi"],
-["Two-Factor","2 baar lock","OTP system","Double suraksha"],
-["Session Lock","Time pe lock","Timer lock","Khula na chhode"],
-["Session Vault","Tijori safe","Vault locker","Strong lock"],
-["Spam Filter","Bekar hataye","Filter code","Kachra saaf"],
-["Phishing Guard","Nakli site bacha","Phishing check","Bank fraud bacha"],
-["Threat Detect","Khatra bataye","Threat alert","Pehle pata chale"],
-["Audit Trail","Pura hisab","Audit log","Record rakhe"],
-["Auto Cleaner","Kachra saaf","Cleaner","Phone tez"],
-["Cache Cleaner","Cache saaf","Cache clear","Jagah banaye"],
-["Storage Boost","Jagah banaye","Storage manager","Memory badhaye"],
-["Focus Mode","Padhai disturb nahi","Focus blocker","Dhyan lage"],
-["Reading Mode","Aankho accha","Reading light","Aankh safe"],
-["Night Shield","Neeli roshni rok","Blue filter","Raat aaram"],
-["Battery Saver","Battery bacha","Battery saver","Charge bache"],
-["Performance Boost","Phone fast","Boost engine","Tez chale"],
-["App Locker","App pe tala","App lock","Koi na khole"],
-["Incognito","Chupke check","Incognito mode","History nahi"],
-["OneTap Login","1 click login","One tap API","Jaldi login"],
-["Secure Notes","Secret note","Encrypted notes","Yaad rahe"],
-["Cloud Sync","Sab same","Cloud sync","Har phone same"],
-["Version History","Purana dikhe","History tracker","Wapas dekhe"],
-["Restore Point","Wapas laaye","Restore system","Galti sudhare"],
-["Secure DNS","Net rasta safe","DNS lock","Hacking rok"],
-["Data Saver","Net kam khaye","Data compress","Net bache"],
-["PIN Lock","Number lock","4 digit PIN","Number suraksha"],
-["Pattern Lock","Design lock","Pattern draw","Design suraksha"],
-["Face Unlock","Chehre se khule","Face API","Chehre lock"],
-["Fingerprint","Anguthe se","Finger scan","Anguthe lock"],
-["Smart Rules","Khud samjhe","AI rules","Khud kaam"],
-["Auto Lock","Khud band","Auto timer","Khula na rahe"],
-["Recovery Key","Dusri chabi","Backup key","Chabi kho toh dusri"],
-["Thar Mode","Garmi me chale","Heat resistant","Reodar 50°C me chale"],
-["Tractor Mode","Khet me chale","Rough use","Dhul me chale"],
-["Sirohi Shield","Sirohi special","Sirohi code","Sirohi baccho liye"],
-["Reodar Guard","Reodar rakshak","Reodar wall","Reodar naam roshan"],
-["Basan Tiger","Basan ka sher","Tiger power","Basan strong"],
-["Teacher Mode","Teacher screen","Teacher dashboard","Teacher check"],
-["Principal Mode","Principal report","Principal view","Principal sign"],
-["Exam Lock","Exam lock","Exam timer","Cheating rok"],
-["Screen Guard","Photo rok","Screenshot block","Photo na le"],
-["Bank Lock","Bank jaisa strong","Bank encryption","Bank safe"],
-["UPI Guard","PhonePe GPay safe","UPI shield","Paise safe"],
-["Aadhaar Safe","Aadhaar safe","Aadhaar lock","Aadhaar safe"],
-["OTP Auto","OTP khud bhare","OTP reader","Yaad na karna"],
-["70X Power","70 guna tez","Power booster","Sabse tez"],
-["Deva Gold","Tera naam Rank #1","Gold badge","Sirohi No.1"]
-];
-
-const grid=document.getElementById('grid');
-features.forEach((f,i)=>{
-  let d=document.createElement('div');
-  d.className='card'+(i>=55?' gold':'');
-  d.innerHTML=`<b>${i+1}. ${f[0]}</b><br><small>${f[1]}</small>`;
-  d.onclick=()=>openModal(i);
-  grid.appendChild(d);
-});
-
-function openModal(i){
-  document.getElementById('mTitle').innerText=(i+1)+'. '+features[i][0];
-  document.getElementById('mKaam').innerText='Kaam: '+features[i][1];
-  document.getElementById('mKaise').innerText='Kaise: '+features[i][2];
-  document.getElementById('mFayda').innerText='Fayda: '+features[i][3]+' | Status: ACTIVE ✅';
-  document.getElementById('modal').style.display='flex';
-  if(navigator.vibrate) navigator.vibrate(50);
-}
-
-function checkPass(){
-  let p=document.getElementById('pass').value;
-  let s=document.getElementById('strength');
-  if(p.length==0){s.innerText='Password Likho...';s.style.color='white';return}
-  if(p.length<4){s.innerText='❌ Weak - Sirohi Rank 0';s.style.color='red'}
-  else if(p.length<8){s.innerText='⚠️ Medium - Rank 50';s.style.color='orange'}
-  else{s.innerText='✅ STRONG 100/100 - Sirohi Rank #1 Gold!';s.style.color='gold'}
-}
-</script>
-</body>
-</html>
+const F=[["AI Shield","AI hack se bachao","AI pattern check","Cyber suraksha"],["Cloud Backup","Online safe","GitHub save","Kabhi khoye nahi"],["Ad-Free","Bina ads","No ad code","Disturb nahi"],["Biometric Lock","Ungli se khule","Fingerprint","Koi na khole"],["Dark Mode Pro","Aankho aaram","Black theme","Raat aaram"],["Data Encrypt","Code badle","AES lock","Hacker na padhe"],["Offline Mode","Bina net","Local storage","Gaon me chale"],["Priority Support","Basan help","Top list","Basan maan"],["Auto Save","Apne aap save","Auto fn","Delete na ho"],["Fast Sync","Jaldi bheje","Sync API","Time bache"],["VPN Secure","Net safe","VPN tunnel","Data safe"],["Custom Themes","Gold Black","Theme switch","Pasand rang"],["Analytics","Gine kitne strong","Counter","Pata chale"],["QR Scanner","QR check","QR API","Jaldi check"],["Multi Login","5 login sath","Multi window","Time bache"],["Export PDF","PDF nikale","PDF gen","Teacher ko de"],["Chat Support","Chat madad","Chat box","Jawab turant"],["Auto Update","Khud naya ho","Update checker","Naya feature"],["Dark Browse","Safe browsing","Secure browser","Galat block"],["Malware Guard","Virus bacha","Virus scan","Phone safe"],["Smart Backup","Akal backup","Smart logic","Sahi time"],["Backup Cloud","Dusri copy","Dual cloud","Ek kharab dusra"],["Activity Log","Hisab likhe","Log file","Chori pakde"],["Privacy Lock","Jhank bacha","Privacy shield","Koi dekhe nahi"],["Two-Factor","2 baar lock","OTP","Double safe"],["Session Lock","Time lock","Timer","Khula na chhode"],["Session Vault","Tijori safe","Vault locker","Strong lock"],["Spam Filter","Bekar hataye","Filter code","Kachra saaf"],["Phishing Guard","Nakli bacha","Phishing check","Fraud bacha"],["Threat Detect","Khatra bataye","Threat alert","Pehle pata"],["Audit Trail","Pura hisab","Audit log","Record"],["Auto Cleaner","Kachra saaf","Cleaner","Phone tez"],["Cache Cleaner","Cache saaf","Cache clear","Jagah bane"],["Storage Boost","Jagah banaye","Storage mgr","Memory badhe"],["Focus Mode","Disturb nahi","Focus blocker","Dhyan lage"],["Reading Mode","Aankh accha","Reading light","Aankh safe"],["Night Shield","Neeli roshni rok","Blue filter","Raat aaram"],["Battery Saver","Battery bacha","Battery saver","Charge bache"],["Performance Boost","Phone fast","Boost engine","Tez chale"],["App Locker","App tala","App lock","Koi na khole"],["Incognito","Chupke check","Incognito","History nahi"],["OneTap Login","1 click login","One tap API","Jaldi login"],["Secure Notes","Secret note","Encrypted notes","Yaad rahe"],["Cloud Sync","Sab same","Cloud sync","Har phone same"],["Version History","Purana dikhe","History tracker","Wapas dekhe"],["Restore Point","Wapas laaye","Restore sys","Galti sudhare"],["Secure DNS","Net rasta safe","DNS lock","Hacking rok"],["Data Saver","Net kam","Data compress","Net bache"],["PIN Lock","Number lock","4 digit PIN","Number safe"],["Pattern Lock","Design lock","Pattern draw","Design safe"],["Face Unlock","Chehre khule","Face API","Chehre lock"],["Fingerprint","Anguthe se","Finger scan","Anguthe lock"],["Smart Rules","Khud samjhe","AI rules","Khud kaam"],["Auto Lock","Khud band","Auto timer","Khula na rahe"],["Recovery Key","Dusri chabi","Backup key","Chabi kho dusri"],["Thar Mode","Garmi me chale","Heat resistant","Reodar 50°C chale"],["Tractor Mode","Khet me chale","Rough use","Dhul me chale"],["Sirohi Shield","Sirohi special","Sirohi code","Sirohi baccho"],["Reodar Guard","Reodar rakshak","Reodar wall","Reodar naam"],["Basan Tiger","Basan sher","Tiger power","Basan strong"],["Teacher Mode","Teacher screen","Teacher dash","Teacher check"],["Principal Mode","Principal report","Principal view","Principal sign"],["Exam Lock","Exam lock","Exam timer","Cheating rok"],["Screen Guard","Photo rok","Screenshot block","Photo na le"],["Bank Lock","Bank strong","Bank encryption","Bank safe"],["UPI Guard","PhonePe GPay safe","UPI shield","Paise safe"],["Aadhaar Safe","Aadhaar safe","Aadhaar lock","Aadhaar safe"],["OTP Auto","OTP khud bhare","OTP reader","Yaad na karna"],["70X Power","70 guna tez","Power booster","Sabse tez"],["Deva Gold","Tera naam Rank #1","Gold badge","Sirohi No.1"]];
+const g=document.getElementById('g');F.forEach((f,i)=>{let d=document.createElement('div');d.className='lux-card'+(i>=55?' gold':'');d.innerHTML=`${i>=55?'<div class=\"diamond\"></div>':''}<b>${String(i+1).padStart(2,'0')} • ${f[0]}</b><small>${f[1]}</small>`;d.onclick=()=>{document.getElementById('pt').innerText=f[0];document.getElementById('pk').innerText='Kaam: '+f[1];document.getElementById('ps').innerText='Kaise: '+f[2];document.getElementById('pf').innerText='Fayda: '+f[3]+' | VAULT: ACTIVE';document.getElementById('pop').style.display='flex';if(navigator.vibrate)navigator.vibrate(40)};g.appendChild(d)});
+function chk(){let v=document.getElementById('p').value,s=document.getElementById('st');if(!v){s.innerText='AWAITING CODE...';s.style.color='#555';return}if(v.length<4){s.innerText='WEAK • ACCESS DENIED';s.style.color='#ff3333'}else if(v.length<8){s.innerText='MEDIUM • LEVEL 50';s.style.color='#ffaa00'}else{s.innerText='PRIVÉ ACCESS GRANTED • GOLD • RANK #1';s.style.color='#d4af37'}}
+</script></body></html>
