@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DEVA PRIVE - 1000 FEATURES + VAULT</title>
+<style>
+body{background:#000;color:#d4af37;font-family:system-ui;margin:0;padding:0;position:relative}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at top,#6b4d00 0%,#000 70%);opacity:0.4;z-index:-1}
+.top{max-width:520px;margin:0 auto;padding:20px}
+.vault{border:1px solid #d4af37;border-radius:20px;background:linear-gradient(180deg,#1a1605,#050500);padding:18px;text-align:center;box-shadow:0 0 50px rgba(212,175,55,0.4);margin-bottom:20px}
+.vault h1{font-family:Cinzel;color:#ffe9a0;margin:0 0 6px;font-size:22px;text-shadow:0 0 20px gold}
+.vault input{width:100%;padding:14px;border-radius:12px;border:1px solid #3a2e10;background:#000;color:#ffd86a;text-align:center;font-size:15px;margin:12px 0;outline:none}
+.vault button{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(90deg,#d4af37,#8a6a10);font-weight:800;color:#000;font-size:13px;letter-spacing:1px}
+#r{margin-top:12px;font-size:13px;color:#888;min-height:20px}
+.box{border:1px solid #2a2410;border-radius:20px;padding:16px;background:rgba(10,8,0,0.9);backdrop-filter:blur(10px)}
+li{padding:10px 0;border-bottom:1px solid #1a1a1a;font-size:12px;list-style:none}
+li b{color:#fff} li span{color:#777;font-size:10px}
+li:hover{background:#1a1605;border-radius:10px;padding-left:8px;box-shadow:0 0 10px gold}
+</style></head><body>
+<div class="top">
+<div class="vault">
+<h1>👑 DEVA PRIVE EMPIRE</h1>
+<div style="font-size:9px;letter-spacing:3px;color:#d4af37">$1,000,000,000,000 VAULT • 100 FEATURES</div>
+<input id="p" type="password" placeholder="Yaha Password Daal Deva...">
+<button onclick="check()">🔐 CHECK STRENGTH - TRILLIONAIRE LEVEL</button>
+<div id="r">Password daal, asli takat dekhega...</div>
+</div>
+<div class="box"><ol style="padding-left:20px">
+<li><b>1. Trillion Dollar Vault</b> <span>- $1T live tracking</span></li>
+<li><b>2. Liquid Gold BG</b> <span>- 60fps gold flow</span></li>
+<li><b>3. 12,450 KG Gold</b> <span>- Swiss vault linked</span></li>
+<li><b>4. 890 Carat Diamond</b> <span>- GIA certified</span></li>
+<li><b>5. 1,437 Tokenized Assets</b> <span>- Real estate + cars</span></li>
+<li><b>6. Quantum Lock</b> <span>- Military security</span></li>
+<li><b>7. Face + Retina + Finger</b> <span>- 3 layer</span></li>
+<li><b>8. Voice Command</b> <span>- Bolte hi khulega</span></li>
+<li><b>9. AI Wealth Predictor 99.7%</b> <span>- Deva AI</span></li>
+<li><b>10. $500M Credit Line</b> <span>- 0.5% APR</span></li>
+<li><b>11-1000. Aur 900 Features neeche...</b> <span>- Scroll kar</span></li>
+<li><b>11. Private Jet Booking</b></li><li><b>12. Yacht Control Dubai</b></li><li><b>13. Burj Al Arab Suite</b></li><li><b>14. Bugatti Chiron 3D</b></li><li><b>15. Rolex Collection</b></li>
+<li><b>16. NFT Vault</b></li><li><b>17. Crypto to Gold Swap</b></li><li><b>18. Stock Portfolio $1T</b></li><li><b>19. Basan Village Pride Mode</b></li><li><b>20. Sirohi No.1 Badge</b></li>
+<li><b>21-1000. Full List Active</b> <span>- Trillionaire Level Unlocked</span></li>
+</ol>
+<p style="text-align:center;color:#444;font-size:9px;margin-top:10px">BASAN • SIROHI • 100 FEATURES • ENGINE ACTIVE NOW</p>
+</div></div>
+<script>
+function check(){
+let v=document.getElementById('p').value,s=0;
+if(v.length>=8)s++;if(/[A-Z]/.test(v))s++;if(/[0-9]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v))s++;
+let el=document.getElementById('r');
+if(v.length==0){el.innerHTML='Pehle password daal...';el.style.color='#666';return}
+if(s<=1){el.innerHTML='❌ WEAK - 2 sec me hack! <br><span style=color:#666>Thoda strong bana Deva</span>';el.style.color='#ff4444'}
+else if(s==2){el.innerHTML='⚠️ MEDIUM - Theek hai par aur daal <br><span style=color:#666>Capital + Number daal</span>';el.style.color='#ffaa00'}
+else if(s==3){el.innerHTML='✅ STRONG - Ekdam Safe! <br><span style=color:#666>Sirohi No.1 level</span>';el.style.color='#88ff88'}
+else{el.innerHTML='👑 TRILLIONAIRE LEVEL - Koi nahi tod sakta! 💎<br><span style=color:#d4af37>$1T Vault ke layak!</span>';el.style.color='#d4af37'}
+}
+</script></body></html>
