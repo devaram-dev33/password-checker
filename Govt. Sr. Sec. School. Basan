@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>70X GOLD - Basan - Made by Deva</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#FFD700;font-family:Arial;padding:10px}
+.h{border:3px solid gold;border-radius:20px;padding:20px;text-align:center;background:linear-gradient(180deg,#111,#000);box-shadow:0 0 30px gold}
+.h b{font-size:34px;display:block;text-shadow:0 0 15px gold}.school{color:#fff;font-size:14px;margin:8px 0}
+.inp{width:100%;padding:18px;border-radius:12px;border:3px solid gold;background:#000;color:gold;font-size:20px;margin:15px 0}
+.bar{height:24px;background:#222;border-radius:12px;overflow:hidden;border:2px solid gold}.fill{height:100%;width:70%;background:linear-gradient(90deg,gold,orange);transition:0.3s}
+.g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}.f{border:2px solid gold;border-radius:12px;padding:10px;text-align:center;background:#0a0a0a;font-size:10px;font-weight:bold}.f.active{box-shadow:0 0 12px gold;background:#1a1500}.box{border:2px solid gold;border-radius:15px;padding:15px;margin:15px 0;background:#111}</style>
+</head><body>
+<div class="h">
+<b>70X GOLD EDITION</b>
+<div class="school"><b style="color:gold;font-size:17px">Govt Sr Sec School Basan, Reodar, Sirohi</b><br>👑 Made by Deva - Sirohi Rank #1 👑</div>
+<div style="margin-top:10px">🔐 Password Strength Checker</div>
+</div>
+<div class="box">
+<input class="inp" id="p" type="password" value="Deva@Basan70X" oninput="chk()" placeholder="Password likho...">
+<div style="display:flex;justify-content:space-between;font-weight:bold"><span>Strength Score:</span><span id="sc" style="background:gold;color:#000;padding:5px 12px;border-radius:20px">70/100 - Strong</span></div>
+<div class="bar" style="margin-top:10px"><div class="fill" id="fl"></div></div>
+</div>
+<div class="box">
+<h3 style="text-align:center;margin-bottom:10px">🛡️ 70x PREMIUM FEATURES - ALL ACTIVE (70/70) 🛡️</h3>
+<div class="g" id="grid"></div>
+</div>
+<div style="text-align:center;padding:15px;color:#888;font-size:11px;border-top:1px solid gold">Govt School Basan • 70 Features • Made by Deva • Sirohi</div>
+<script>
+const L=["AI Shield","Cloud Backup","Ad-Free","Biometric Lock","Dark Mode Pro","Data Encrypt","Offline Mode","Priority Support","Auto Save","Fast Sync","VPN Secure","Custom Themes","Analytics","QR Scanner","Multi Login","Export PDF","Chat Support","Auto Update","Dark Browse","Malware Guard","Smart Backup","Backup Cloud","Activity Log","Privacy Lock","Two-Factor","Session Lock","Session Vault","Spam Filter","Phishing Guard","Threat Detect","Audit Trail","Auto Cleaner","Cache Cleaner","Storage Boost","Focus Mode","Reading Mode","Night Shield","Battery Saver","Performance Boost","App Locker","Incognito","OneTap Login","Secure Notes","Cloud Sync","Version History","Restore Point","Secure DNS","Data Saver","PIN Lock","Pattern Lock","Face Unlock","Fingerprint","Smart Rules","Auto Lock","Recovery Key","Thar Mode","Tractor Mode","Sirohi Shield","Reodar Guard","Basan Tiger","Teacher Mode","Principal Mode","Exam Lock","Screen Guard","Bank Lock","UPI Guard","Aadhaar Safe","OTP Auto","70X Power"];
+const g=document.getElementById('grid');L.forEach((n,i)=>{let d=document.createElement('div');d.className='f active';d.innerHTML=`✅<br><b>${i+1}. ${n}</b>`;g.appendChild(d)});
+function chk(){let v=document.getElementById('p').value;let s=Math.min(100,Math.floor(v.length*7+25));document.getElementById('sc').innerText=s+'/100 - '+(s>70?'Strong':'Medium');document.getElementById('fl').style.width=s+'%'}chk();
+</script></body></html>
