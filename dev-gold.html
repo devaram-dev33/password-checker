@@ -1,90 +1,55 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DEVA PRIVE - EMPIRE</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DEVA 70 Guna - Password Vault</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;min-height:100vh;display:flex;justify-content:center;padding:12px}
-.liquid-bg{position:fixed;inset:0;background:#000;z-index:-2}
-.liquid-bg::before{content:'';position:absolute;inset:-50%;background:
-radial-gradient(ellipse at 30% 20%,#4a3805 0%,transparent 60%),
-radial-gradient(ellipse at 80% 50%,#2e2100 0%,transparent 55%),
-conic-gradient(from 0deg,#000,#d4af37,#000);animation:spin 20s linear infinite;filter:blur(18px);opacity:0.7}
-@keyframes spin{to{transform:rotate(360deg)}}
-.gold-wave{position:fixed;inset:0;z-index:-1;opacity:0.55;background:
-repeating-linear-gradient(115deg,transparent 0 120px,rgba(212,175,55,0.12) 120px 122px,transparent 122px 250px);
-animation:wave 8s linear infinite}
-@keyframes wave{0%{transform:translateX(-250px)}100%{transform:translateX(250px)}}
-.phone{width:100%;max-width:400px;border-radius:38px;border:1.5px solid #3a2e10;background:linear-gradient(180deg,rgba(12,12,12,0.88),rgba(0,0,0,0.98));box-shadow:0 0 0 1px rgba(212,175,55,0.2),0 30px 100px rgba(0,0,0,1),0 0 80px rgba(212,175,55,0.18);overflow:hidden;backdrop-filter:blur(30px)}
-.top{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(212,175,55,0.14)}
-.top b{font-family:'Cinzel';font-size:10px;letter-spacing:3px;color:#d4af37}
-.top span{font-size:8px;border:1px solid rgba(212,175,55,0.35);padding:4px 9px;border-radius:20px;color:#d4af37;letter-spacing:1px}
-.mid{padding:14px 16px;text-align:center}
-.mid small{font-size:10px;color:#9a9583;letter-spacing:1px;line-height:1.6}
-.vault-card{margin:14px 14px 0;border-radius:22px;border:1px solid rgba(212,175,55,0.28);background:radial-gradient(100% 100% at 50% 0%,#1e1a07,#0a0a0a);padding:14px;position:relative;overflow:hidden}
-.vault-card::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.12),transparent);animation:shine 3s infinite}
-@keyframes shine{0%{left:-100%}100%{left:200%}}
-.safe-box{width:100%;height:200px;border-radius:16px;background:
-radial-gradient(ellipse at 50% 40%,#3d2e0a 0%,#120e02 55%,#000 100%);
-border:1px solid #2a2210;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:inset 0 0 50px rgba(212,175,55,0.35),inset 0 0 0 1px rgba(212,175,55,0.2)}
-.safe-icon{font-size:72px;filter:drop-shadow(0 0 18px #d4af37) drop-shadow(0 0 40px #d4af37);animation:glow 2.2s infinite alternate}
-@keyframes glow{0%{filter:drop-shadow(0 0 15px #d4af37)}100%{filter:drop-shadow(0 0 35px #ffd700) drop-shadow(0 0 60px #d4af37)}}
-.diamond-border{position:absolute;inset:8px;border:1px dashed rgba(212,175,55,0.25);border-radius:12px;pointer-events:none}
-.diamond-border::before{content:'◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆';position:absolute;top:-7px;left:50%;transform:translateX(-50%);font-size:7px;color:#d4af37;letter-spacing:4px;background:#0a0a0a;padding:0 8px}
-.vault-label{margin-top:12px;font-family:'Cinzel';font-size:10px;letter-spacing:3px;color:#c7b98a}
-.net-worth{margin:16px 14px;border-radius:20px;border:1px solid rgba(212,175,55,0.22);background:linear-gradient(180deg,#101010,#070707);padding:18px 14px;text-align:center}
-.net-worth span{font-size:10px;letter-spacing:4px;color:#6e6852}
-.net-worth h1{font-family:'Cinzel';font-size:31px;margin:8px 0;background:linear-gradient(180deg,#fff9c4,#ffec8a,#d4af37,#fff2a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 14px rgba(212,175,55,0.7));letter-spacing:0.5px;word-break:break-all}
-.net-worth small{font-size:10.5px;color:#b8ad8a}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:16px}
-.g{border:1px solid #1e1e1e;border-radius:12px;background:#0b0b0b;padding:12px 5px;text-align:center}
-.g b{font-size:8px;letter-spacing:1px;color:#7a7562;font-family:'Cinzel'}
-.g h3{font-family:'Cinzel';font-size:15px;color:#d4af37;margin:6px 0}
-.g p{font-size:7.5px;color:#4e4a3d}
-.qa{margin:14px;border:1px solid #181818;border-radius:16px;padding:12px;background:#0a0a0a}
-.qa b{display:block;text-align:center;font-family:'Cinzel';font-size:9px;letter-spacing:3px;color:#666;margin-bottom:10px}
-.btns{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
-.bt{padding:9px 13px;border-radius:20px;border:1px solid rgba(212,175,55,0.3);background:#141208;font-size:10px;color:#d4af37}
-.bt.gold{background:linear-gradient(180deg,#ffe9a0,#d4af37);color:#000;font-weight:900;box-shadow:0 4px 18px rgba(212,175,55,0.45)}
-</style>
-</head>
-<body>
-<div class="liquid-bg"></div>
-<div class="gold-wave"></div>
-<div class="phone">
-<div class="top"><b>👑 DEVA PRIVE • EMPIRE EDITION</b><span>TRILLIONAIRE • LVL 99</span></div>
-<div class="mid"><small>Dubai Royal Palace Vault • Secured Private Vault<br>📍 Dubai, UAE • GST 14:32 • BASAN LINKED • SIROHI NO.1</small></div>
-<div class="vault-card">
-<div class="safe-box">
-<div class="diamond-border"></div>
-<div class="safe-icon">🏛️</div>
-<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:42px;filter:drop-shadow(0 0 12px gold)">🔐💎</div>
+body{margin:0;background:#000;color:#fff;font-family:system-ui;padding:14px}
+h1{text-align:center;color:#d4af37;border:2px solid #d4af37;padding:10px;border-radius:14px;font-size:18px}
+.vault{background:linear-gradient(180deg,#1a1605,#050500);border:1px solid gold;border-radius:16px;padding:14px;box-shadow:0 0 30px rgba(212,175,55,0.3)}
+input{width:100%;padding:13px;border-radius:10px;background:#000;border:1px solid #444;color:#ffe9a0;text-align:center;font-size:16px;box-sizing:border-box}
+button{width:100%;padding:12px;background:linear-gradient(90deg,#d4af37,#8a6a10);border:none;border-radius:10px;font-weight:900;margin-top:10px}
+.result{margin-top:10px;padding:10px;border-radius:10px;background:#0a0a0a;border:1px solid #222;font-size:13px;line-height:20px}
+.str{font-size:22px;font-weight:900;text-align:center;margin:6px 0}
+table{width:100%;border-collapse:collapse;margin-top:14px} td{border:1px solid #222;padding:7px;font-size:11px} td:first-child{color:gold;font-weight:800;width:35px;text-align:center}
+@media print{button,.vault{display:none} body{background:#fff;color:#000}}
+</style></head><body>
+<h1>👑 DEVA 70 GUNA VAULT<br><span style="font-size:10px;color:#888">PASSWORD SEARCH + HACK TIME + 70 FEATURES</span></h1>
+
+<div class="vault">
+<div style="color:gold;font-size:11px;letter-spacing:2px;text-align:center">🔐 PASSWORD SEARCH KARO</div>
+<input id="p" type="text" placeholder="Yaha Password Likho - ex: Deva@123">
+<button onclick="check()">CHECK KARO - KITNI DER ME HACK HOGA? 🔍</button>
+<div id="r" class="result">Password likh ke CHECK dabao Deva...</div>
 </div>
-<div class="vault-label">VAULT #VII • ROYAL PALACE VAULT • DIAMOND ENCRUSTED</div>
-</div>
-<div class="net-worth">
-<span>TOTAL NET WORTH</span>
-<h1>$1,000,000,000,000.00</h1>
-<small>≈ 1.02T DEVA • +12.4% 24H ▲ • 12,450kg GOLD • BASAN</small>
-<div class="grid3">
-<div class="g"><b>GOLD HOLDINGS</b><h3>12,450 kg</h3><p>Liquid Gold Reserves</p></div>
-<div class="g"><b>DIAMONDS</b><h3>890.3 ct</h3><p>Certified Rare Gems</p></div>
-<div class="g"><b>ASSETS</b><h3>1,437</h3><p>Tokenized Assets</p></div>
-</div>
-</div>
-<div class="qa">
-<b>QUICK ACTIONS</b>
-<div class="btns">
-<div class="bt gold">🔓 Open Vault</div>
-<div class="bt">⇄ Transfer</div>
-<div class="bt">+ Mint Gold</div>
-<div class="bt">🛡️ Security</div>
-</div>
-</div>
-<div style="text-align:center;padding:0 0 18px;font-size:7px;letter-spacing:3px;color:#333">CRAFTED IN BASAN • REODAR • SIROHI • RAJASTHAN • WORLDWIDE • $1 TRILLION VAULT • 2026</div>
-</div>
-</body>
-</html>
+
+<table id="tbl"></table>
+<button onclick="window.print()" style="background:#222;color:gold;border:1px solid gold">🖨️ 70 FEATURES PRINT / PDF</button>
+
+<script>
+function check(){
+let v=document.getElementById('p').value;
+if(!v){document.getElementById('r').innerHTML='❌ Password daal pehle!';return}
+let len=v.length, hasUpper=/[A-Z]/.test(v), hasLower=/[a-z]/.test(v), hasNum=/[0-9]/.test(v), hasSym=/[^A-Za-z0-9]/.test(v);
+let charset=0; if(hasLower) charset+=26; if(hasUpper) charset+=26; if(hasNum) charset+=10; if(hasSym) charset+=32;
+let entropy = len * Math.log2(charset || 1);
+let guesses = Math.pow(2, entropy);
+let perSec = 1000000000;
+let sec = guesses/perSec;
+let timeText='';
+if(sec<1) timeText='⚡ 1 Second se bhi kam me HACK!';
+else if(sec<60) timeText=`⏱️ ${Math.floor(sec)} Second me HACK!`;
+else if(sec<3600) timeText=`⏱️ ${Math.floor(sec/60)} Minute me HACK!`;
+else if(sec<86400) timeText=`⏱️ ${Math.floor(sec/3600)} Ghante me HACK!`;
+else if(sec<31536000) timeText=`📅 ${Math.floor(sec/86400)} Din me HACK!`;
+else if(sec<3153600000) timeText=`🔒 ${Math.floor(sec/31536000)} Saal me HACK! SAFE HAI!`;
+else timeText=`👑 ${Math.floor(sec/31536000)} Saal - TRILLIONAIRE SAFE! Kabhi hack nahi hoga!`;
+
+let score=0; if(len>=8)score++; if(hasUpper)score++; if(hasNum)score++; if(hasSym)score++; if(len>=12)score++;
+let level= score<=1?'❌ WEAK - Bilkul Halka': score==2?'⚠️ MEDIUM - Theek hai': score==3?'✅ STRONG - Mast hai!': score==4?'💎 VERY STRONG - Badiya!':'👑 TRILLIONAIRE LEVEL - Koi hack nahi kar payega!';
+
+document.getElementById('r').innerHTML=`<div class=str>${level}</div><b>Password:</b> ${v}<br><b>Length:</b> ${len} Char<br><b>Upper:</b> ${hasUpper?'✅':'❌'} | <b>Number:</b> ${hasNum?'✅':'❌'} | <b>Symbol:</b> ${hasSym?'✅':'❌'}<br><b>Hack Time:</b> ${timeText}<br><b>Entropy:</b> ${entropy.toFixed(1)} bits`;
+}
+let f=["Trillion Dollar Vault","Liquid Gold 60fps","12,450 KG Gold Link","890 Carat Diamond GIA","1,437 Tokenized Assets","Quantum Lock","Face+Retina+Finger","Voice Unlock","AI Wealth Predictor","$500M Credit 0.5% APR","Private Jet Booking","Yacht Control Dubai","Burj Suite Access","Bugatti 3D","Rolex Tracker","NFT Vault","Crypto to Gold Swap","$1T Stock Live","Basan Pride Mode","Sirohi No.1 Badge","DNA Vault","Laser Security","Satellite Tracking","Swiss Bank Link","Dubai Gold Souk Live","Black Card Unlimited","24K Gold Keyboard","Diamond Dust Display"];
+let t=document.getElementById('tbl'); let html='';
+for(let i=1;i<=70;i++){ let name=f[(i-1)%f.length]+ (i>28?' - Empire v'+i:''); html+=`<tr><td>${i}</td><td>${name}</td><td style="color:#0f0">✅ ACTIVE</td></tr>`}
+t.innerHTML=html;
+</script>
+</body></html>
