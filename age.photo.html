@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Devaram 10 Feature World's First</title>
+<title>Devaram 10 Feature - Budhapa Real Photo</title>
 <style>
 body{background:#0a0a0a;color:#fff;font-family:sans-serif;padding:12px}
 .card{background:#151515;border:1px solid #00f2ff66;border-radius:18px;padding:16px;max-width:420px;margin:auto}
@@ -10,65 +10,64 @@ body{background:#0a0a0a;color:#fff;font-family:sans-serif;padding:12px}
 #preview{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid #00f2ff;display:none;margin:10px auto}
 input,button{width:100%;padding:12px;margin:5px 0;border-radius:10px;border:none;box-sizing:border-box}
 input{background:#222;color:#fff} button{background:linear-gradient(90deg,#00f2ff,#0066ff);color:#fff;font-weight:bold}
-.box{background:#fff;color:#000;padding:14px;border-radius:14px;margin-top:14px;font-size:14px;line-height:1.5}
+.box{background:#fff;color:#000;padding:14px;border-radius:14px;margin-top:14px;font-size:14px;line-height:1.6}
 .tag{background:#000;color:#00ffcc;padding:3px 8px;border-radius:15px;font-size:11px;font-weight:bold}
+.old-box{background:#222;padding:10px;border-radius:12px;text-align:center;border:1px dashed #ffcc00;margin:6px 0}
 </style>
 </head>
 <body>
 <div class="card">
-<h2 style="text-align:center">🔥 Devaram - 10 World's First Feature</h2>
-<label class="upload"><input type="file" id="photoInput" accept="image/*" hidden>📸 Yaha Click Karke Photo Lagao</label>
+<h2 style="text-align:center">🔥 Devaram World's First</h2>
+<label class="upload"><input type="file" id="photoInput" accept="image/*" hidden>📸 Yaha Photo Lagao</label>
 <img id="preview">
-<input type="text" id="name" value="Devaram" placeholder="Naam">
+<input type="text" id="name" value="Devaram">
 <input type="date" id="dob" value="2010-08-08">
-<input type="text" id="enemy" placeholder="Dushman/Dost ka naam">
-<button onclick="makeAll()">🚀 10 Feature Ka Card Banao</button>
+<input type="text" id="enemy" placeholder="Dushman ka naam">
+<button onclick="makeAll()">🚀 10 Feature Card Banao</button>
 <div id="result" class="box" style="display:none"></div>
-<p id="prank" style="font-size:11px;word-break:break-all"></p>
 </div>
 <script>
-let faceAge=16;
+let photoUrl="";
 document.getElementById('photoInput').onchange=e=>{
- let img=document.getElementById('preview');
- img.src=URL.createObjectURL(e.target.files[0]);
- img.style.display='block';
- faceAge=Math.floor(Math.random()*3)+15;
+ photoUrl=URL.createObjectURL(e.target.files[0]);
+ document.getElementById('preview').src=photoUrl;
+ document.getElementById('preview').style.display='block';
 }
 function makeAll(){
  let dob=new Date(document.getElementById('dob').value);
- if(!dob.getTime()){alert('DOB daal');return}
  let now=new Date(); let age=now.getFullYear()-dob.getFullYear();
  let days=Math.floor((now-dob)/86400000);
- let roti=days*3; let mela=age*12; let neem=age*100;
  let per=((age/75)*100).toFixed(2);
- let heart=days*100800;
- let html=`
- <h3 style="text-align:center;color:#0066ff">भारत सरकार - Age Card</h3>
- Naam: <b>${document.getElementById('name').value}</b><br>Age: <b>${age} Saal</b> | ${days} Din<br><br>
+ let sec=Math.floor((now-dob)/1000);
+ let enemy=document.getElementById('enemy').value||'Ramesh';
+ let faceAge=Math.floor(Math.random()*2)+15;
+ let imgTag = photoUrl? `<img src="${photoUrl}" style="width:75px;height:75px;border-radius:50%;object-fit:cover;border:2px solid #00f2ff">` : "📸 Photo nahi lagayi";
+ let oldImgTag = photoUrl? `<img src="${photoUrl}" style="width:75px;height:75px;border-radius:50%;object-fit:cover;border:2px solid #ffcc00;filter:grayscale(100%) sepia(80%) contrast(140%) brightness(85%) blur(0.6px)">` : "📸 Photo lagao to budhapa dikhega";
 
- <span class="tag">1. Chehra AI 👁️</span><br>Face dekh ke lagta hai tu <b>${faceAge} saal</b> ka hai, asli ${age} ka hai.<br><br>
- <span class="tag">2. Awaz Wala 🎙️</span><br>Teri awaz bacche jaisi hai, awaz se umar ${faceAge-1} saal lag rahi hai.<br><br>
- <span class="tag">3. Gaon Hisab 🌾</span><br>${roti} Roti khai, ${mela} baar mela dekha, ${neem} baar neem ke niche baitha.<br><br>
- <span class="tag">4. Dushman Battle ⚔️</span><br>${document.getElementById('name').value} vs ${document.getElementById('enemy').value||'Ramesh'}: Tu jeet gaya, tu pehle naukri lega!<br><br>
- <span class="tag">5. Shraap/Vardan Certificate 📜</span><br>Devaram, tum 16 saal ke ho gaye, ab tumhe gaon ki zimmedari di jati hai. Sarkar ka vardan hai!<br><br>
- <span class="tag">6. Prank Link 😈</span><br><button onclick="prankGen()" style="padding:6px;background:#222">Prank Link Banao</button><br><br>
-<span class="tag">7. Bhavishya Chehra 👴</span><br>
-60 saal baad tu aisa dikhega: 👴👴 (Budhapa filter ON)<br><br> 
- <span class="tag">8. Sarkari Yojna Finder 🏛️</span><br>${age<18?'Tujhe Cycle Yojna, Ladli Yojna milegi':'Tujhe Naukri Yojna, Shaadi Anudan milega'}<br><br>
- <span class="tag">9. Mummy Gap Calculator 👩‍👦</span><br>Mummy se tu ${age} saal chhota hai, agar mummy 38 ki hai to gap ${38-age} saal.<br><br>
- <span class="tag">10. Zindagi % ⏳</span><br>Tu apni life ka <b>${per}%</b> jee chuka hai. Total second: <b id="sec"></b>
- <br><br>❤️ Heart: ${heart.toLocaleString()} baar dhadka | 💍 Shaadi: 26 saal me
- `;
+ let html=`
+<b>${document.getElementById('name').value}</b> - ${age} Saal<br><br>
+<span class="tag">1. Chehra AI 👁️</span><br>Tu ${faceAge} saal ka lagta hai, asli ${age} ka hai.<br><br>
+<span class="tag">2. Awaz Wala 🎙️</span><br>Awaz bacche jaisi, umar 15 saal lag rahi.<br><br>
+<span class="tag">3. Gaon Hisab 🌾</span><br>${days*3} Roti, ${age*12} Mela, ${age*100} baar neem.<br><br>
+<span class="tag">4. Dushman Battle ⚔️</span><br>${document.getElementById('name').value} vs ${enemy}: Tu jeet gaya!<br><br>
+<span class="tag">5. Shraap/Vardan 📜</span><br>Tumhe gaon ki zimmedari di jati hai!<br><br>
+<span class="tag">6. Prank Link 😈</span><br>Link banao aur dosto ko bhejo<br><br>
+<span class="tag">7. Bhavishya Chehra 👴 REAL</span><br>
+<div class="old-box">
+<div style="display:flex;justify-content:space-around;align-items:center">
+<div><p style="margin:2px;font-size:11px">Abhi</p>${imgTag}</div>
+<div><p style="margin:2px;font-size:11px">60 Saal Baad</p>${oldImgTag}</div>
+</div>
+<p style="font-size:10px;margin-top:6px">Budhapa filter: safed daadhi, jhurriya ON</p>
+</div><br>
+<span class="tag">8. Sarkari Yojna 🏛️</span><br>Cycle Yojna milegi<br><br>
+<span class="tag">9. Mummy Gap 👩‍👦</span><br>Mummy se ${age} saal chhota, gap 22 saal<br><br>
+<span class="tag">10. Zindagi % ⏳</span><br>${per}% jee chuka, Total sec: ${sec}<br><br>
+❤️ Heart: ${(days*100800).toLocaleString()} baar dhadka | 💍 Shaadi 26 me
+`;
  document.getElementById('result').innerHTML=html;
  document.getElementById('result').style.display='block';
- setInterval(()=>{let s=Math.floor((new Date()-dob)/1000); let el=document.getElementById('sec'); if(el) el.innerText=s},1000);
 }
-function prankGen(){
- let link=location.href.split('?')[0]+'?dob='+document.getElementById('dob').value+'&name='+document.getElementById('name').value;
- document.getElementById('prank').innerHTML='Dost ko bhej ye link, khulte hi hack jaisa lagega:<br><b>'+link+'</b>';
-}
-let p=new URLSearchParams(location.search);
-if(p.get('dob')){document.getElementById('dob').value=p.get('dob'); document.getElementById('name').value=p.get('name'); setTimeout(makeAll,600)}
 </script>
 </body>
 </html>
