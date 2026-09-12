@@ -1,35 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Age Calculator - Deva</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deva Ka 60 Feature Age Calculator - Duniya Ka Sabse Bada</title>
 <style>
-body{font-family:Arial;background:#0f0c29;background:linear-gradient(to right,#24243e,#302b63,#0f0c29);height:100vh;display:flex;justify-content:center;align-items:center;margin:0;color:white}
-.box{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:30px;border-radius:20px;width:300px;text-align:center}
-input{width:90%;padding:12px;border-radius:10px;border:none;margin:15px 0;font-size:16px}
-button{padding:12px 25px;border:none;background:#ff5e62;color:white;border-radius:10px;font-size:16px;cursor:pointer;width:100%}
-#result{margin-top:20px;font-size:18px;background:rgba(0,0,0,0.3);padding:15px;border-radius:10px}
+body{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:white;font-family:system-ui;padding:15px}
+.box{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border-radius:20px;padding:20px;margin:10px 0;border:1px solid rgba(255,255,255,0.2)}
+input{width:90%;padding:12px;border-radius:10px;border:none;font-size:18px;margin:10px 0}
+button{padding:12px 25px;background:#ff416c;color:white;border:none;border-radius:10px;font-size:18px;cursor:pointer;width:100%;margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px}
+h2{color:#ffd700} h3{color:#00f2fe;margin:5px 0} .val{font-size:20px;font-weight:bold;color:#fff}
+.small{font-size:13px;opacity:0.8}
 </style>
 </head>
 <body>
-<div class="box">
-<h2>🎂 Age Calculator</h2>
-<p>Apni DOB Daal</p>
-<input type="date" id="dob">
-<button onclick="calcAge()">Calculate Age</button>
-<div id="result">Result yaha ayega</div>
+<h1 style="text-align:center">🔥 Deva Ka 60 Feature Age Calculator 🔥</h1>
+<div class="box" style="text-align:center">
+<input type="date" id="dob"><br>
+<input type="text" id="name" placeholder="Naam likh - ex: Deva">
+<button onclick="calculate()">Calculate Karo - 60 Result Dekho</button>
 </div>
-<script>
-function calcAge(){
-let dob=new Date(document.getElementById('dob').value);
-if(!dob.getTime()){document.getElementById('result').innerText='Date select kar Deva!'; return;}
-let today=new Date();
-let age=today.getFullYear()-dob.getFullYear();
-let m=today.getMonth()-dob.getMonth();
-if(m<0 || (m===0 && today.getDate()<dob.getDate())){age--;}
-let months=Math.abs(m); if(months==12) months=0;
-document.getElementById('result').innerHTML=`Tu <b>${age} saal</b> ka hai Deva!<br> <small>${months} mahine extra</small>`;
-}
-</script>
-</body>
-  </html>
+
+<div id="result" style="display:none">
+<div class="grid">
+<div class="box"><h3>1-10 Basic Age</h3><div id="basic"></div></div>
+<div class="box"><h3>11-18 Rashi / Zodiac</h3><div id="rashi"></div></div>
+<div class="box"><h3>19-28 Desi Sarkari [VIRAL]</h3><div id="sarkari"></div></div>
+<div class="box"><h3>29-36 Body + Paisa</h3><div id="body"></div></div>
+<div class="box"><h3>37-44 Duniya Wala</h3><div id="duniya"></div></div>
+<div class="box"><h3>45-60 AI Wale - Jo Kisi Pe Nahi</h3><div id="ai"></div></div>
+</div>
+<div class="box" style="text-align:center">
+<button onclick="shareWA()">📱 WhatsApp Pe Share Karo</button>
+<button onclick="speak()">🔊 Rajkumari Voice Me Suno</button>
+</div>
+</
