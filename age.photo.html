@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devaram Photo Age Card</title>
+<style>
+body{background:#0a0a0a;color:white;font-family:sans-serif;display:flex;justify-content:center;padding:20px}
+.card{background:linear-gradient(145deg,#1e1e1e,#111);border:1px solid #333;border-radius:20px;padding:20px;width:100%;max-width:360px;text-align:center;box-shadow:0 0 30px #00f2ff33}
+.upload{border:2px dashed #00f2ff;padding:15px;border-radius:12px;margin-bottom:15px;cursor:pointer}
+#preview{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid #00f2ff;display:none;margin:0 auto 15px}
+input{width:90%;padding:12px;margin:8px 0;border-radius:10px;border:none;background:#222;color:white}
+button{width:100%;padding:14px;background:linear-gradient(90deg,#00f2ff,#0066ff);border:none;border-radius:12px;color:white;font-weight:bold;font-size:16px;margin-top:10px}
+#result{display:none;margin-top:20px;background:white;color:black;padding:15px;border-radius:15px;text-align:left}
+#result h3{margin:0;text-align:center;color:#0066ff}
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>📸 Photo Wala Age Card</h2>
+
+  <label class="upload">
+    <input type="file" id="photoInput" accept="image/*" hidden>
+    👆 Yaha Click Karke Photo Lagao
+  </label>
+  <img id="preview">
+
+  <input type="text" id="name" placeholder="Naam Likho - Devaram">
+  <input type="date" id="dob">
+  <button onclick="makeCard()">Card Banao - 60 Result</button>
+
+  <div id="result">
+    <h3>भारत सरकार - Age Card</h3>
+    <p><b>Naam:</b> <span id="rName"></span></p>
+    <p><b>DOB:</b> <span id="rDob"></span></p>
+    <p><b>Age:</b> <span id="rAge"></span></p>
+    <p><b>Total Din:</b> <span id="rDays"></span></p>
+    <hr>
+    <p style="font-size:12px;text-align:center">Devaram Dev 60 Feature Calculator</p>
+  </div>
+</div>
+
+<script>
+const photoInput = document.getElementById('photoInput');
+const preview = document.getElementById('preview');
+photoInput.onchange = e => {
+  const file = e.target.files[0];
+  preview.src = URL.createObjectURL(file);
+  preview.style.display = 'block';
+}
+function makeCard(){
+  let dob = new Date(document.getElementById('dob').value);
+  if(!dob.getTime()){alert('DOB daal Deva');return}
+  let now = new Date();
+  let age = now.getFullYear() - dob.getFullYear();
+  let diff = Math.floor((now - dob)/(1000*60*60*24));
+
+  document.getElementById('rName').innerText = document.getElementById('name').value || 'Devaram';
+  document.getElementById('rDob').innerText = document.getElementById('dob').value;
+  document.getElementById('rAge').innerText = age + ' Saal';
+  document.getElementById('rDays').innerText = diff + ' Din';
+  document.getElementById('result').style.display = 'block';
+}
+</script>
+</body>
+  </html>
