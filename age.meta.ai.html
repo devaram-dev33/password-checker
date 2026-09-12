@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Real Face Age 0-100</title>
+<style>
+body{background:#000;color:#fff;font-family:sans-serif;text-align:center;padding:10px}
+.box{background:#111;border:3px solid #ffcc00;border-radius:25px;padding:15px;max-width:420px;margin:auto}
+#wrap{position:relative;width:300px;height:300px;margin:15px auto;border-radius:50%;overflow:hidden;border:4px solid #ffcc00;background:#222}
+#wrap canvas{position:absolute;top:0;left:0;width:100%;height:100%}
+input[type=range]{width:100%;accent-color:#ffcc00;height:20px}
+#age{font-size:40px;font-weight:900;color:#ffcc00;margin:10px}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>📸 Apna Photo Lo - Budhapa Dekho 0-100</h2>
+<input type="file" id="file" accept="image/*" capture="user"><br><br>
+<div id="wrap"><canvas id="c" width="600" height="600"></canvas></div>
+<div id="age">16 Saal</div>
+<input type="range" id="s" min="0" max="100" value="16">
+<p style="font-size:12px;color:#aaa">0 = Jawaan | 50 = Adhed | 100 = Pura Budha Seth</p>
+</div>
+
+<script>
+let canvas=document.getElementById('c'), ctx=canvas.getContext('2d');
+let img=new Image(), loaded=false;
+let slider=document.getElementById('s');
+
+document.getElementById('file').onchange=e=>{
+  let f=e.target.files[0];
+  img.onload=()=>{loaded=true; draw(16);}
+  img.src=URL.createObjectURL(f);
+}
+
+slider.oninput=e=>draw(e.target.value);
+
+function draw(val){
+  document.getElementById('age').innerText=val+" Saal";
+  if(!loaded) return;
+  val=parseInt(val);
+  ctx.clearRect(0,0,600,600);
+
+  // Base photo
+  ctx.drawImage(img,0,0,600,600);
+
+  // 1. Chamdi ka rang badlo - jawaan se budha
+  let gray = val>25? (val-25)*1.2 : 0;
+  let sepia = val>20? (val-20)*0.9 : 0;
+  let contrast = 100 + val*0.7;
+  let brightness = 100 - val*0.25;
+  ctx.filter=`grayscale(${gray}%) sepia(${sepia}%) contrast(${contrast}%) brightness(${brightness}%)`;
+  ctx.drawImage(canvas,0,0);
+  ctx.filter='none';
+
+  // 2. Jhurriya - pura chehra change
+  if(val>25){
+    ctx.strokeStyle=`rgba(40,30,20,${(val-25)/200})`;
+    ctx.lineWidth=1.5;
+    // Maatha
+    for(let i=0;i<(val-25)/12;i++){
+      ctx.beginPath(); ctx.moveTo(180,140+i*18); ctx.lineTo(420,145+i*16); ctx.stroke();
+    }
+    // Aankh ke paas
+    for(let i=0;i<(val-30)/15;i++){
+      ctx.beginPath(); ctx.moveTo(150,220+i*8); ctx.lineTo(240,230+i*8); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(360,220+i*8); ctx.lineTo(450,230+i*8); ctx.stroke();
+    }
+    // Gaal latakna
+    if(val>45){
+      ctx.strokeStyle=`rgba(30,20,10,${(val-45)/150})`;
+      ctx.lineWidth=2;
+      ctx.beginPath(); ctx.moveTo(180,320); ctx.quadraticCurveTo(200,380,190,450); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(420,320); ctx.quadraticCurveTo(400,380,410,450); ctx.stroke();
+    }
+  }
+
+  // 3. Baal safed - upar ka hissa
+  if(val>35){
+    ctx.fillStyle=`rgba(230,230,230,${(val-35)/120})`;
+    ctx.beginPath();
+    ctx.ellipse(300,90,180,70,0,0,Math.PI*2);
+    ctx.fill();
+  }
+
+  // 4. Aankh ke niche thai li - budhape ki nishani
+  if(val>40){
+    ctx.fillStyle=`rgba(80,60,50,${(val-40)/200})`;
+    ctx.beginPath(); ctx.ellipse(220,270,35,12,0,0,Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(380,270,35,12,0,0,Math.PI*2); ctx.fill();
+  }
+}
+
+draw(16);
+</script>
+</body>
+</html>
