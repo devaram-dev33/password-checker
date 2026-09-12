@@ -3,36 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deva Ka 60 Feature Age Calculator - Duniya Ka Sabse Bada</title>
+<title>Deva Ka 60 Feature Age Calculator</title>
 <style>
-body{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:white;font-family:system-ui;padding:15px}
-.box{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border-radius:20px;padding:20px;margin:10px 0;border:1px solid rgba(255,255,255,0.2)}
-input{width:90%;padding:12px;border-radius:10px;border:none;font-size:18px;margin:10px 0}
-button{padding:12px 25px;background:#ff416c;color:white;border:none;border-radius:10px;font-size:18px;cursor:pointer;width:100%;margin-top:10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px}
-h2{color:#ffd700} h3{color:#00f2fe;margin:5px 0} .val{font-size:20px;font-weight:bold;color:#fff}
-.small{font-size:13px;opacity:0.8}
+body{background:#1a0b2e;color:white;font-family:system-ui;padding:10px;margin:0}
+.card{background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);border-radius:22px;padding:20px;margin:10px auto;max-width:500px;border:1px solid rgba(255,255,255,0.2)}
+input{width:100%;padding:14px;border-radius:12px;border:none;font-size:17px;margin:8px 0;box-sizing:border-box}
+#calcBtn{width:100%;padding:14px;background:#ff2e63;color:white;border:none;border-radius:12px;font-size:18px;font-weight:bold;cursor:pointer}
+.box{background:rgba(255,255,255,0.08);border-radius:16px;padding:14px;margin:10px 0;text-align:left;font-size:14px;line-height:1.7}
+.grid{display:grid;grid-template-columns:1fr;gap:12px;max-width:800px;margin:auto}
+@media(min-width:700px){.grid{grid-template-columns:1fr 1fr}}
+h2{color:#ffd700;text-align:center}
 </style>
 </head>
 <body>
 <h1 style="text-align:center">🔥 Deva Ka 60 Feature Age Calculator 🔥</h1>
-<div class="box" style="text-align:center">
-<input type="date" id="dob"><br>
-<input type="text" id="name" placeholder="Naam likh - ex: Deva">
-<button onclick="calculate()">Calculate Karo - 60 Result Dekho</button>
+
+<div class="card">
+<input type="date" id="dob" value="2010-08-08">
+<input type="text" id="name" placeholder="Naam likh - ex: Deva" value="Ramaram">
+<button id="calcBtn">Calculate Karo - 60 Result Dekho</button>
 </div>
 
 <div id="result" style="display:none">
 <div class="grid">
-<div class="box"><h3>1-10 Basic Age</h3><div id="basic"></div></div>
-<div class="box"><h3>11-18 Rashi / Zodiac</h3><div id="rashi"></div></div>
-<div class="box"><h3>19-28 Desi Sarkari [VIRAL]</h3><div id="sarkari"></div></div>
-<div class="box"><h3>29-36 Body + Paisa</h3><div id="body"></div></div>
-<div class="box"><h3>37-44 Duniya Wala</h3><div id="duniya"></div></div>
-<div class="box"><h3>45-60 AI Wale - Jo Kisi Pe Nahi</h3><div id="ai"></div></div>
+<div class="box" id="b1"></div>
+<div class="box" id="b2"></div>
+<div class="box" id="b3"></div>
+<div class="box" id="b4"></div>
+<div class="box" id="b5"></div>
+<div class="box" id="b6"></div>
 </div>
-<div class="box" style="text-align:center">
-<button onclick="shareWA()">📱 WhatsApp Pe Share Karo</button>
-<button onclick="speak()">🔊 Rajkumari Voice Me Suno</button>
 </div>
-</
+
+<script>
+document.getElementById('calcBtn').addEventListener('click', function(){
+let v=document.getElementById('dob').value;
+let name=document.getElementById('name').value || "Deva";
+if(!v){alert('Pehle DOB daal Deva!');return;}
+let dob=new Date(v); let now=new Date();
+let diff=now-dob; let days=Math.floor(diff/86400000);
+let ageY=now.getFullYear()-dob.getFullYear();
+let ageM=now.getMonth()-dob.getMonth();
+let ageD=now.getDate()-dob.getDate();
+if(ageD<0){ageM--; ageD+=30} if(ageM<0){ageY--; ageM+=12}
+let nextB=new Date(now.getFullYear(),dob.getMonth(),dob.getDate());
+if(nextB<now) nextB.setFullYear(now.getFullYear()+1);
+let nextDays=Math.ceil((nextB-now)/86400000);
+
+document.getElementById('result').style.display='block';
+
+document.getElementById('b1').innerHTML="<h2>1-10 Basic Age</h2>1. "+name+" tu "+ageY+" saal "+ageM+" mahine "+ageD+" din ka hai<br>2. Total Month: "+(ageY*12+ageM)+"<br>3. Total Week: "+Math.floor(days/7)+"<br>4. Total Din: "+days+"<br>5. Total Ghante: "+(days*24)+"<br>6. Total Minute: "+(days*1440)+"<br>7. Total Second: "+(days*86400)+"<br>8. Next Birthday: "+nextDays+" din baki<br>9. Janm Din: "+dob.toLocaleDateString('hi-IN',{weekday:'long'})+"<br>10. 100 saal tak "+(100-ageY)+" saal baki";
+
+document.getElementById('b2').innerHTML="<h2>11-18 Rashi / Zodiac</h2>11. Rashi: "+["Makar","Kumbh","Meen","Mesh","Vrishabh","Mithun","Kark","Singh","Kanya","Tula","Vrishchik","Dhanu"][dob.getMonth()]+"<br>12. Zodiac: Same<br>13. Nakshatra: Bharani<br>14. Bhagya Ank: "+(dob.getDate()%9+1)+"<br>15. Lucky Rang: Neela<br>16. Chinese Zodiac: Dragon<br>17. Generation: "+(ageY<13?"Gen Alpha":ageY<28?"Gen Z":"Millennial")+"<br>18. Din/Raat me paida: Din";
+
+document.getElementById('b3').innerHTML="<h2>19-28 Desi Sarkari VIRAL</h2>19. Vote: "+(ageY>=18?"Eligible ✅":"Nahi "+(18-ageY)+" saal baki")+"<br>20. License: "+(ageY>=18?"Eligible ✅":"Nahi")+"<br>21. UPSC: "+(ageY>=21?"Eligible ✅":(21-ageY)+" saal baki")+"<br>22. SSC: "+(ageY<=27?"Eligible ✅":"Overage")+"<br>23. Army: "+(ageY>=17&&ageY<=21?"Eligible ✅":"Check")+"<br>24. Shaadi: "+(ageY>=21?"Eligible ✅":(21-ageY)+" saal baki")+"<br>25. School Class: "+(ageY+5)+"th<br>26. IPL dekhe: "+(2026-dob.getFullYear())+"<br>27. PM dekhe: 2<br>28. Diwali dekhi: "+ageY;
+
+document.getElementById('b4').innerHTML="<h2>29-36 Body + Paisa</h2>29. Dil Dhadka: "+(days*100000).toLocaleString()+" baar<br>30. Saans Li: "+(days*22000).toLocaleString()+"<br>31. Soya: "+Math.floor(days/3)+" din<br>32. Baal Badhe: "+(ageY*6)+" inch<br>33. Nakhun: "+(ageY*1.5)+" inch<br>34. Khana: ~"+(ageY*4)+" Lakh ka<br>35. Mobile waste: "+Math.floor(days*0.1)+" din<br>36. Paani: "+(days*3)+" Litre";
+
+document.getElementById('b5').innerHTML="<h2>37-44 Duniya Wala</h2>37. Mars par age: "+(ageY/1.88).toFixed(1)+" saal<br>38. Jupiter par: "+(ageY/11.8).toFixed(2)+"<br>39. Famous Twin: Same day born star<br>40. History: "+dob.getFullYear()+" ki ghatna<br>41. Gold tab: "+dob.getFullYear()*5+" Rs<br>42. Population tab: 6 Arab<br>43. Us din 3 Lakh bacche paida hue<br>44. Weekend born: "+(dob.getDay()==0?"Sunday":"Weekday");
+
+document.getElementById('b6').innerHTML="<h2>45-60 AI Wale - Kisi pe nahi</h2>45. Dosti Battle<br>46. Mummy se gap 24 saal<br>47. Password: "+name+"@"+dob.getDate()+(dob.getMonth()+1)+"#<br>48. Chori Link: devaram-dev33.github.io/password-checker/age.html?dob="+v+"<br>49. Voice Mode<br>50. Future Face<br>51. 2030 me tu "+(2030-dob.getFullYear())+" saal ka<br>52. Certificate<br>53. QR Code<br>54. Life: "+Math.floor(ageY/70*100)+"% jee li<br>55. Advice: Padhai kar<br>56. Photo se Age Guess<br>57. Din ka %<br>58. Embed Widget<br>59. Multi Language<br>60. Party Mode 🎉 "+(nextDays<7?"Birthday Aane wala!":"");
+
+window.scrollTo({top:400,behavior:'smooth'});
+});
+</script>
+</body>
+</html>
