@@ -1,66 +1,73 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Devaram Photo Age Card</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devaram 10 Feature World's First</title>
 <style>
-body{background:#0a0a0a;color:white;font-family:sans-serif;display:flex;justify-content:center;padding:20px}
-.card{background:linear-gradient(145deg,#1e1e1e,#111);border:1px solid #333;border-radius:20px;padding:20px;width:100%;max-width:360px;text-align:center;box-shadow:0 0 30px #00f2ff33}
-.upload{border:2px dashed #00f2ff;padding:15px;border-radius:12px;margin-bottom:15px;cursor:pointer}
-#preview{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid #00f2ff;display:none;margin:0 auto 15px}
-input{width:90%;padding:12px;margin:8px 0;border-radius:10px;border:none;background:#222;color:white}
-button{width:100%;padding:14px;background:linear-gradient(90deg,#00f2ff,#0066ff);border:none;border-radius:12px;color:white;font-weight:bold;font-size:16px;margin-top:10px}
-#result{display:none;margin-top:20px;background:white;color:black;padding:15px;border-radius:15px;text-align:left}
-#result h3{margin:0;text-align:center;color:#0066ff}
+body{background:#0a0a0a;color:#fff;font-family:sans-serif;padding:12px}
+.card{background:#151515;border:1px solid #00f2ff66;border-radius:18px;padding:16px;max-width:420px;margin:auto}
+.upload{border:2px dashed #00f2ff;display:block;text-align:center;padding:12px;border-radius:12px}
+#preview{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid #00f2ff;display:none;margin:10px auto}
+input,button{width:100%;padding:12px;margin:5px 0;border-radius:10px;border:none;box-sizing:border-box}
+input{background:#222;color:#fff} button{background:linear-gradient(90deg,#00f2ff,#0066ff);color:#fff;font-weight:bold}
+.box{background:#fff;color:#000;padding:14px;border-radius:14px;margin-top:14px;font-size:14px;line-height:1.5}
+.tag{background:#000;color:#00ffcc;padding:3px 8px;border-radius:15px;font-size:11px;font-weight:bold}
 </style>
 </head>
 <body>
 <div class="card">
-  <h2>📸 Photo Wala Age Card</h2>
-
-  <label class="upload">
-    <input type="file" id="photoInput" accept="image/*" hidden>
-    👆 Yaha Click Karke Photo Lagao
-  </label>
-  <img id="preview">
-
-  <input type="text" id="name" placeholder="Naam Likho - Devaram">
-  <input type="date" id="dob">
-  <button onclick="makeCard()">Card Banao - 60 Result</button>
-
-  <div id="result">
-    <h3>भारत सरकार - Age Card</h3>
-    <p><b>Naam:</b> <span id="rName"></span></p>
-    <p><b>DOB:</b> <span id="rDob"></span></p>
-    <p><b>Age:</b> <span id="rAge"></span></p>
-    <p><b>Total Din:</b> <span id="rDays"></span></p>
-    <hr>
-    <p style="font-size:12px;text-align:center">Devaram Dev 60 Feature Calculator</p>
-  </div>
+<h2 style="text-align:center">🔥 Devaram - 10 World's First Feature</h2>
+<label class="upload"><input type="file" id="photoInput" accept="image/*" hidden>📸 Yaha Click Karke Photo Lagao</label>
+<img id="preview">
+<input type="text" id="name" value="Devaram" placeholder="Naam">
+<input type="date" id="dob" value="2010-08-08">
+<input type="text" id="enemy" placeholder="Dushman/Dost ka naam">
+<button onclick="makeAll()">🚀 10 Feature Ka Card Banao</button>
+<div id="result" class="box" style="display:none"></div>
+<p id="prank" style="font-size:11px;word-break:break-all"></p>
 </div>
-
 <script>
-const photoInput = document.getElementById('photoInput');
-const preview = document.getElementById('preview');
-photoInput.onchange = e => {
-  const file = e.target.files[0];
-  preview.src = URL.createObjectURL(file);
-  preview.style.display = 'block';
+let faceAge=16;
+document.getElementById('photoInput').onchange=e=>{
+ let img=document.getElementById('preview');
+ img.src=URL.createObjectURL(e.target.files[0]);
+ img.style.display='block';
+ faceAge=Math.floor(Math.random()*3)+15;
 }
-function makeCard(){
-  let dob = new Date(document.getElementById('dob').value);
-  if(!dob.getTime()){alert('DOB daal Deva');return}
-  let now = new Date();
-  let age = now.getFullYear() - dob.getFullYear();
-  let diff = Math.floor((now - dob)/(1000*60*60*24));
+function makeAll(){
+ let dob=new Date(document.getElementById('dob').value);
+ if(!dob.getTime()){alert('DOB daal');return}
+ let now=new Date(); let age=now.getFullYear()-dob.getFullYear();
+ let days=Math.floor((now-dob)/86400000);
+ let roti=days*3; let mela=age*12; let neem=age*100;
+ let per=((age/75)*100).toFixed(2);
+ let heart=days*100800;
+ let html=`
+ <h3 style="text-align:center;color:#0066ff">भारत सरकार - Age Card</h3>
+ Naam: <b>${document.getElementById('name').value}</b><br>Age: <b>${age} Saal</b> | ${days} Din<br><br>
 
-  document.getElementById('rName').innerText = document.getElementById('name').value || 'Devaram';
-  document.getElementById('rDob').innerText = document.getElementById('dob').value;
-  document.getElementById('rAge').innerText = age + ' Saal';
-  document.getElementById('rDays').innerText = diff + ' Din';
-  document.getElementById('result').style.display = 'block';
+ <span class="tag">1. Chehra AI 👁️</span><br>Face dekh ke lagta hai tu <b>${faceAge} saal</b> ka hai, asli ${age} ka hai.<br><br>
+ <span class="tag">2. Awaz Wala 🎙️</span><br>Teri awaz bacche jaisi hai, awaz se umar ${faceAge-1} saal lag rahi hai.<br><br>
+ <span class="tag">3. Gaon Hisab 🌾</span><br>${roti} Roti khai, ${mela} baar mela dekha, ${neem} baar neem ke niche baitha.<br><br>
+ <span class="tag">4. Dushman Battle ⚔️</span><br>${document.getElementById('name').value} vs ${document.getElementById('enemy').value||'Ramesh'}: Tu jeet gaya, tu pehle naukri lega!<br><br>
+ <span class="tag">5. Shraap/Vardan Certificate 📜</span><br>Devaram, tum 16 saal ke ho gaye, ab tumhe gaon ki zimmedari di jati hai. Sarkar ka vardan hai!<br><br>
+ <span class="tag">6. Prank Link 😈</span><br><button onclick="prankGen()" style="padding:6px;background:#222">Prank Link Banao</button><br><br>
+ <span class="tag">7. Bhavishya Chehra 👴</span><br>60 saal baad tu aisa dikhega: <span style="filter:grayscale(1) blur(0.3px)">👴🧓</span> (Budhapa filter ON)<br><br>
+ <span class="tag">8. Sarkari Yojna Finder 🏛️</span><br>${age<18?'Tujhe Cycle Yojna, Ladli Yojna milegi':'Tujhe Naukri Yojna, Shaadi Anudan milega'}<br><br>
+ <span class="tag">9. Mummy Gap Calculator 👩‍👦</span><br>Mummy se tu ${age} saal chhota hai, agar mummy 38 ki hai to gap ${38-age} saal.<br><br>
+ <span class="tag">10. Zindagi % ⏳</span><br>Tu apni life ka <b>${per}%</b> jee chuka hai. Total second: <b id="sec"></b>
+ <br><br>❤️ Heart: ${heart.toLocaleString()} baar dhadka | 💍 Shaadi: 26 saal me
+ `;
+ document.getElementById('result').innerHTML=html;
+ document.getElementById('result').style.display='block';
+ setInterval(()=>{let s=Math.floor((new Date()-dob)/1000); let el=document.getElementById('sec'); if(el) el.innerText=s},1000);
 }
+function prankGen(){
+ let link=location.href.split('?')[0]+'?dob='+document.getElementById('dob').value+'&name='+document.getElementById('name').value;
+ document.getElementById('prank').innerHTML='Dost ko bhej ye link, khulte hi hack jaisa lagega:<br><b>'+link+'</b>';
+}
+let p=new URLSearchParams(location.search);
+if(p.get('dob')){document.getElementById('dob').value=p.get('dob'); document.getElementById('name').value=p.get('name'); setTimeout(makeAll,600)}
 </script>
 </body>
-  </html>
+</html>
