@@ -1,13 +1,14 @@
 {
-  "name": "Devaram Password Checker",
+  "name": "Devaram - Official App",
   "short_name": "Devaram",
-  "start_url": "/password-checker/",
+  "description": "Devaram Official - All Tools In One",
+  "start_url": ".",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#000000",
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/3064/3064197.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/25/25694.png",
       "sizes": "512x512",
       "type": "image/png"
     }
