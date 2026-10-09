@@ -3,51 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DEVA EMPIRE - All Files In One</title>
+<title>Devaram - Official App</title>
+<meta name="description" content="Devaram Official App - All Tools, MP3 Downloader, Photo Editor, Age Calculator">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#000000">
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js')}</script>
 <style>
-body{margin:0;background:#000;color:#fff;font-family:Arial;text-align:center;padding:10px}
-h1{color:#d4af37;text-shadow:0 0 10px gold}
-.vault{border:1px solid gold;border-radius:16px;padding:15px;margin:10px auto;max-width:400px;background:#111}
-.card{background:linear-gradient(180deg,#1a1600,#000);padding:12px;margin:8px 0;border-radius:10px;border:1px solid #333}
-.card b{color:#ffe9a0}
-.card span{color:#777;font-size:12px}
-a{color:#000;background:linear-gradient(90deg,gold,#ffcc00);display:block;padding:12px;text-decoration:none;border-radius:8px;font-weight:bold;margin:6px 0}
-input{width:90%;padding:12px;border-radius:10px;border:1px solid gold;background:#000;color:#fff;margin-top:10px}
-button{width:95%;padding:12px;background:gold;border:0;border-radius:8px;font-weight:bold;margin-top:8px}
+:root{--bg:#000;--card:#111;--gold:#d4af37;--text:#fff}
+.light{--bg:#f5f5f5;--card:#fff;--text:#000}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial;text-align:center;padding:10px;transition:0.3s}
+h1{color:var(--gold);text-shadow:0 0 10px gold}
+.vault{border:1px solid var(--gold);border-radius:16px;padding:15px;margin:15px auto;max-width:480px;background:var(--card)}
+a.btn{color:#000;background:linear-gradient(90deg,gold,#ffcc00);display:block;padding:13px;text-decoration:none;border-radius:10px;font-weight:bold;margin:8px 0}
+input{width:90%;padding:12px;border-radius:10px;border:1px solid var(--gold);background:var(--bg);color:var(--text);margin-top:8px}
+button.main{width:95%;padding:12px;background:gold;border:0;border-radius:8px;font-weight:bold;margin-top:8px;cursor:pointer}
+.share-bar{display:flex;gap:8px;justify-content:center;margin-top:10px}
+.share-bar button{flex:1;padding:10px;border-radius:8px;border:1px solid gold;background:transparent;color:var(--gold)}
+#photoPreview{max-width:100%;border-radius:10px;margin-top:10px;display:none}
 </style>
 </head>
 <body>
-<h1>👑 DEWASI EMPIRE HUB<br><span style="font-size:14px;color:#888">Devaram Official</span></h1>
 
-<div class="vault">
-<div style="color:#d4af37;font-size:11px;letter-spacing:2px">SECURE VAULT</div>
-<input id="p" type="password" placeholder="Yaha Password likh...">
-<button onclick="check()">Check Strength</button>
-<div id="r" style="margin-top:8px;color:#888;font-size:14px"></div>
+<div style="display:flex;justify-content:space-between;align-items:center;max-width:480px;margin:auto">
+<button onclick="toggleMode()" style="background:var(--card);color:var(--gold);border:1px solid gold;padding:8px 12px;border-radius:20px">🌙 / ☀️ Dark</button>
+<button onclick="askNotify()" style="background:var(--card);color:var(--gold);border:1px solid gold;padding:8px 12px;border-radius:20px">🔔 Notify</button>
+<button onclick="shareApp()" style="background:gold;color:#000;border:0;padding:8px 12px;border-radius:20px;font-weight:bold">📤 Share</button>
 </div>
 
+<h1>👑 DEVARAM<br><span style="font-size:14px;color:#888;letter-spacing:3px">OFFICIAL APP</span></h1>
+
+<!-- APK DOWNLOAD + REFER -->
 <div class="vault">
-<a href="password.html">🔐 Password Checker</a>
-<a href="calc.html">🧮 Calculator</a>
-<a href="qr.html">📱 QR Generator</a>
-<a href="todo.html">📝 To-Do List</a>
-<a href="weather.html">⛅ Weather</a>
-<a href="clock.html">⏰ Clock</a>
-<a href="age.photo.html">📸 Age Photo</a>
-<a href="dev-gold.html">💰 Dev Gold</a>
+<a class="btn" href="#" onclick="downloadAPK()">📥 APK Download - Devaram App</a>
+<div style="margin-top:10px">
+<b style="color:var(--gold)">💸 Refer & Earn</b><br>
+<input id="referLink" value="https://devaram-dev33.github.io/password-checker/?ref=DEVARAM" readonly>
+<button class="main" onclick="copyRefer()">Copy & Share on WhatsApp</button>
+</div>
+<div class="share-bar">
+<button onclick="shareWA()">WhatsApp</button>
+<button onclick="shareAny()">All Apps</button>
+</div>
+</div>
+
+<!-- PASSWORD -->
+<div class="vault">
+<div style="color:var(--gold);font-size:11px;letter-spacing:2px">SECURE VAULT</div>
+<input id="p" type="password" placeholder="Password likh...">
+<button class="main" onclick="check()">Check Strength</button>
+<div id="r" style="margin-top:8px;color:#888"></div>
+</div>
+
+<!-- MP3 DOWNLOADER -->
+<div class="vault">
+<b style="color:var(--gold)">🎵 MP3 Downloader</b>
+<input id="yt" placeholder="YouTube Link Paste Karo...">
+<button class="main" onclick="mp3()">Get MP3</button>
+<div id="mp3r" style="margin-top:8px;font-size:13px"></div>
+</div>
+
+<!-- PHOTO EDITOR -->
+<div class="vault">
+<b style="color:var(--gold)">🖼️ Photo Editor</b>
+<input type="file" id="imgUp" accept="image/*" onchange="loadImg(event)">
+<img id="photoPreview">
+<div class="share-bar">
+<button onclick="filterImg('grayscale(100%)')">Black & White</button>
+<button onclick="filterImg('sepia(100%)')">Sepia</button>
+<button onclick="filterImg('none')">Original</button>
+</div>
+</div>
+
+<!-- AGE CALCULATOR -->
+<div class="vault">
+<b style="color:var(--gold)">🔢 Age Calculator</b>
+<input type="date" id="dob">
+<button class="main" onclick="calcAge()">Calculate Age</button>
+<div id="ageR" style="margin-top:8px"></div>
+</div>
+
+<!-- ALL OLD TOOLS -->
+<div class="vault">
+<div style="color:var(--gold);font-size:11px;letter-spacing:2px;margin-bottom:10px">ALL FEATURES</div>
+<a class="btn" href="password.html">🔐 Password Checker</a>
+<a class="btn" href="calc.html">🧮 Calculator</a>
+<a class="btn" href="qr.html">📱 QR Generator</a>
+<a class="btn" href="todo.html">📝 To-Do List</a>
+<a class="btn" href="weather.html">⛅ Weather App</a>
+<a class="btn" href="clock.html">⏰ Clock</a>
+<a class="btn" href="age.photo.html">📸 Age Photo Tool</a>
+<a class="btn" href="dev-gold.html">💰 Dev Gold</a>
 </div>
 
 <script>
-function check(){
-let v=document.getElementById('p').value;
-let r=document.getElementById('r');
-if(v.length<4){r.innerHTML='❌ Bahut Kamzor';r.style.color='red';return}
-if(v.length<8){r.innerHTML='⚠️ Medium';r.style.color='orange';return}
-if(v.match(/[A-Z]/) && v.match(/[0-9]/) && v.match(/[^A-Za-z0-9]/)){r.innerHTML='✅ Strong Hai Boss!';r.style.color='#00ff00'}else{r.innerHTML='😐 Theek Hai, Aur Strong Kar';r.style.color='yellow'}
-}
+function check(){let v=p.value,r=document.getElementById('r');if(v.length<4){r.innerHTML='❌ Bahut Kamzor';r.style.color='red';return}if(v.length<8){r.innerHTML='⚠️ Medium';r.style.color='orange';return}if(v.match(/[A-Z]/)&&v.match(/[0-9]/)&&v.match(/[^A-Za-z0-9]/)){r.innerHTML='✅ Strong Hai Boss!';r.style.color='#0f0'}else{r.innerHTML='😐 Aur Strong Kar';r.style.color='yellow'}}
+function toggleMode(){document.body.classList.toggle('light')}
+function askNotify(){Notification.requestPermission().then(p=>{if(p=='granted'){new Notification('Devaram App','{body:"Welcome to Devaram Official 👑"}')}})}
+function shareApp(){if(navigator.share){navigator.share({title:'Devaram App',text:'Devaram Official App Download Karo 👑',url:location.href})}else{shareWA()}}
+function shareWA(){window.open('https://wa.me/?text='+encodeURIComponent('Devaram App Download Karo 👑 '+location.href))}
+function shareAny(){shareApp()}
+function copyRefer(){navigator.clipboard.writeText(document.getElementById('referLink').value);alert('Link Copied! Ab WhatsApp pe share karo');shareWA()}
+function downloadAPK(){alert('APK Download Jaldi Aayega! Abhi Install App pe click karke Phone me Install Karo');}
+function mp3(){let link=document.getElementById('yt').value;if(!link)return alert('Link dalo');document.getElementById('mp3r').innerHTML='🔗 Tera MP3 Ready Hai:<br><a class="btn" target="_blank" href="https://loader.to/en2/?url='+encodeURIComponent(link)+'">⬇️ Download MP3 Now</a>';}
+function loadImg(e){let img=document.getElementById('photoPreview');img.src=URL.createObjectURL(e.target.files[0]);img.style.display='block';}
+function filterImg(f){document.getElementById('photoPreview').style.filter=f}
+function calcAge(){let dob=new Date(document.getElementById('dob').value);let diff=Date.now()-dob.getTime();let age=new Date(diff);document.getElementById('ageR').innerHTML='Teri Age Hai: '+(age.getUTCFullYear()-1970)+' Saal';}
 </script>
 </body>
 </html>
