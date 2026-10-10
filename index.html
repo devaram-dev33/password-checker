@@ -1,139 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="google-site-verification" content="6VTxDxb79lBaM72Uc504w3MP9_vEUHdlsT9E3_zGHsM" />
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Devaram - Official App</title>
-<meta name="description" content="Devaram Official App - All Tools, MP3 Downloader, Photo Editor, Age Calculator">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>DEVA OS - All Apps</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#000000">
-<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js')}</script>
 <style>
-:root{--bg:#000;--card:#111;--gold:#d4af37;--text:#fff}
-.light{--bg:#f5f5f5;--card:#fff;--text:#000}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial;text-align:center;padding:10px;transition:0.3s}
-h1{color:var(--gold);text-shadow:0 0 10px gold}
-.vault{border:1px solid var(--gold);border-radius:16px;padding:15px;margin:15px auto;max-width:480px;background:var(--card)}
-a.btn{color:#000;background:linear-gradient(90deg,gold,#ffcc00);display:block;padding:13px;text-decoration:none;border-radius:10px;font-weight:bold;margin:8px 0}
-input{width:90%;padding:12px;border-radius:10px;border:1px solid var(--gold);background:var(--bg);color:var(--text);margin-top:8px}
-button.main{width:95%;padding:12px;background:gold;border:0;border-radius:8px;font-weight:bold;margin-top:8px;cursor:pointer}
-.share-bar{display:flex;gap:8px;justify-content:center;margin-top:10px}
-.share-bar button{flex:1;padding:10px;border-radius:8px;border:1px solid gold;background:transparent;color:var(--gold)}
-#photoPreview{max-width:100%;border-radius:10px;margin-top:10px;display:none}
+:root{--bg:#000;--card:#151515;--gold:#d4af37}
+body{margin:0;background:var(--bg);color:#fff;font-family:sans-serif;padding-bottom:80px}
+h1{text-align:center;color:var(--gold);margin:10px 0 0 0;text-shadow:0 0 15px var(--gold)}
+p.sub{text-align:center;color:#888;margin:0 0 15px 0;font-size:12px}
+.search{width:92%;margin:10px 4%;padding:14px;border-radius:25px;border:1px solid var(--gold);background:var(--card);color:#fff;outline:none}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:12px}
+.app{background:var(--card);border-radius:18px;padding:10px 5px;text-align:center;border:1px solid #222}
+.app:active{transform:scale(0.9);border-color:var(--gold)}
+.app img{width:45px;height:45px;border-radius:12px}
+.app span{display:block;font-size:11px;margin-top:6px;color:#eee}
+.vault{border:1px solid var(--gold);border-radius:15px;padding:12px;margin:12px;background:var(--card)}
+button.main{width:100%;padding:12px;background:linear-gradient(gold,#b8960c);border:none;border-radius:10px;font-weight:bold;color:#000}
+.dock{position:fixed;bottom:0;left:0;right:0;background:#111;border-top:1px solid #222;display:flex;justify-content:space-around;padding:10px 0}
+.dock div{font-size:22px}
 </style>
 </head>
 <body>
+<h1>DEVA OS 2035</h1>
+<p class="sub">All Play Store Apps - One Hub</p>
+<input class="search" id="search" placeholder="🔍 App dhoondo - YouTube, Google..." oninput="filterApps()">
 
-<div style="display:flex;justify-content:space-between;align-items:center;max-width:480px;margin:auto">
-<button onclick="toggleMode()" style="background:var(--card);color:var(--gold);border:1px solid gold;padding:8px 12px;border-radius:20px">🌙 / ☀️ Dark</button>
-<button onclick="askNotify()" style="background:var(--card);color:var(--gold);border:1px solid gold;padding:8px 12px;border-radius:20px">🔔 Notify</button>
-<button onclick="shareApp()" style="background:gold;color:#000;border:0;padding:8px 12px;border-radius:20px;font-weight:bold">📤 Share</button>
+<div class="grid" id="grid">
+<!-- GOOGLE APPS -->
+<div class="app" onclick="openApp('https://www.google.com')"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=128"><span>Google</span></div>
+<div class="app" onclick="openApp('https://www.youtube.com')"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128"><span>YouTube</span></div>
+<div class="app" onclick="openApp('https://mail.google.com')"><img src="https://www.google.com/s2/favicons?domain=gmail.com&sz=128"><span>Gmail</span></div>
+<div class="app" onclick="openApp('https://maps.google.com')"><img src="https://www.google.com/s2/favicons?domain=maps.google.com&sz=128"><span>Maps</span></div>
+<div class="app" onclick="openApp('https://drive.google.com')"><img src="https://www.google.com/s2/favicons?domain=drive.google.com&sz=128"><span>Drive</span></div>
+<div class="app" onclick="openApp('https://photos.google.com')"><img src="https://www.google.com/s2/favicons?domain=photos.google.com&sz=128"><span>Photos</span></div>
+<!-- SOCIAL -->
+<div class="app" onclick="openApp('https://www.instagram.com')"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=128"><span>Insta</span></div>
+<div class="app" onclick="openApp('https://www.facebook.com')"><img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=128"><span>Facebook</span></div>
+<div class="app" onclick="openApp('https://web.whatsapp.com')"><img src="https://www.google.com/s2/favicons?domain=whatsapp.com&sz=128"><span>WhatsApp</span></div>
+<div class="app" onclick="openApp('https://www.snapchat.com')"><img src="https://www.google.com/s2/favicons?domain=snapchat.com&sz=128"><span>Snapchat</span></div>
+<div class="app" onclick="openApp('https://twitter.com')"><img src="https://www.google.com/s2/favicons?domain=twitter.com&sz=128"><span>X</span></div>
+<div class="app" onclick="openApp('https://www.threads.net')"><img src="https://www.google.com/s2/favicons?domain=threads.net&sz=128"><span>Threads</span></div>
+<!-- SHOPPING / OTHER -->
+<div class="app" onclick="openApp('https://www.amazon.in')"><img src="https://www.google.com/s2/favicons?domain=amazon.in&sz=128"><span>Amazon</span></div>
+<div class="app" onclick="openApp('https://www.flipkart.com')"><img src="https://www.google.com/s2/favicons?domain=flipkart.com&sz=128"><span>Flipkart</span></div>
+<div class="app" onclick="openApp('https://www.hotstar.com')"><img src="https://www.google.com/s2/favicons?domain=hotstar.com&sz=128"><span>Hotstar</span></div>
+<div class="app" onclick="openApp('https://www.netflix.com')"><img src="https://www.google.com/s2/favicons?domain=netflix.com&sz=128"><span>Netflix</span></div>
+<div class="app" onclick="openApp('https://chat.openai.com')"><img src="https://www.google.com/s2/favicons?domain=openai.com&sz=128"><span>ChatGPT</span></div>
+<div class="app" onclick="openApp('https://www.irctc.co.in')"><img src="https://www.google.com/s2/favicons?domain=irctc.co.in&sz=128"><span>IRCTC</span></div>
 </div>
 
-<h1>👑 DEVARAM<br><span style="font-size:14px;color:#888;letter-spacing:3px">OFFICIAL APP</span></h1>
-
-<!-- APK DOWNLOAD + REFER -->
 <div class="vault">
-<a class="btn" href="#" onclick="downloadAPK()">📥 APK Download - Devaram App</a>
-<div style="margin-top:10px">
-<b style="color:var(--gold)">💸 Refer & Earn</b><br>
-<input id="referLink" value="https://devaram-dev33.github.io/password-checker/?ref=DEVARAM" readonly>
-<button class="main" onclick="copyRefer()">Copy & Share on WhatsApp</button>
-</div>
-<div class="share-bar">
-<button onclick="shareWA()">WhatsApp</button>
-<button onclick="shareAny()">All Apps</button>
-</div>
+<b style="color:gold">⚡ OK Google jaisa Voice Search</b><br>
+<button class="main" onclick="startVoice()">🎤 Bolke App Kholo - OK Google</button>
+<p id="voice"></p>
 </div>
 
-<!-- PASSWORD -->
-<div class="vault">
-<div style="color:var(--gold);font-size:11px;letter-spacing:2px">SECURE VAULT</div>
-<input id="p" type="password" placeholder="Password likh...">
-<button class="main" onclick="check()">Check Strength</button>
-<div id="r" style="margin-top:8px;color:#888"></div>
+<div class="vault" style="border-color:red">
+<b style="color:red">🚀 Isse Play Store App Jaisa Banao</b><br>
+<p style="font-size:12px">1. Browser ke 3 dot pe click kar > Add to Home Screen daba de.<br>2. Ab ye Deva OS tere phone me Play Store App jaisa install ho jayega, bina Play Store ke!</p>
+<button class="main" onclick="alert('3 dot > Add to Home Screen > Install pe click kar de')">Install Kaise Kare?</button>
 </div>
 
-<!-- MP3 DOWNLOADER -->
-<div class="vault">
-<b style="color:var(--gold)">🎵 MP3 Downloader</b>
-<input id="yt" placeholder="YouTube Link Paste Karo...">
-<button class="main" onclick="mp3()">Get MP3</button>
-<div id="mp3r" style="margin-top:8px;font-size:13px"></div>
-</div>
-
-<!-- PHOTO EDITOR -->
-<div class="vault">
-<b style="color:var(--gold)">🖼️ Photo Editor</b>
-<input type="file" id="imgUp" accept="image/*" onchange="loadImg(event)">
-<img id="photoPreview">
-<div class="share-bar">
-<button onclick="filterImg('grayscale(100%)')">Black & White</button>
-<button onclick="filterImg('sepia(100%)')">Sepia</button>
-<button onclick="filterImg('none')">Original</button>
-</div>
-</div>
-
-<!-- AGE CALCULATOR -->
-<div class="vault">
-<b style="color:var(--gold)">🔢 Age Calculator</b>
-<input type="date" id="dob">
-<button class="main" onclick="calcAge()">Calculate Age</button>
-<div id="ageR" style="margin-top:8px"></div>
-</div>
-<!-- ===== DEVA OS 2035 - 10 KHATARNAK FUTURE - START ===== -->
-<div style="padding:10px; border-top:2px dashed gold; margin-top:10px;">
-<h2 style="color:var(--gold); text-align:center;">🚀 DEVA OS 2035 - 10 Naye Future 🚀</h2>
-
-<div class="vault"><b style="color:var(--gold)">1. DEVA AI Offline</b><br><input id="q1" placeholder="Bina net ke pucho"><button class="main" onclick="document.getElementById('a1').innerText='Deva tu 2035 ka sabse bada builder banega!'">Ask</button><p id="a1"></p></div>
-
-<div class="vault"><b style="color:var(--gold)">2. P2P 1GB Share</b><br><button class="main" onclick="alert('QR Ready!')">Start Share</button></div>
-
-<div class="vault"><b style="color:var(--gold)">3. Time Capsule 2028</b><br><input type="date" id="d3"><button class="main" onclick="alert('Lock ho gaya '+document.getElementById('d3').value+' ko khulega')">Lock</button></div>
-
-<div class="vault"><b style="color:var(--gold)">4. Moon + Sapna</b><br><button class="main" onclick="alert('50 Moon photo lo')">🌙 Moon</button> <button class="main" onclick="alert('Raat ko phone paas rakho')">💤 Sapna</button></div>
-
-<div class="vault"><b style="color:var(--gold)">5. Google Turbo</b><br><button class="main" onclick="alert('Turbo ON')">Turbo ON</button></div>
-
-<div class="vault" style="border-color:red"><b style="color:red">6. Aankh Se Control 👁️</b><br><button class="main" onclick="document.getElementById('e6').innerText='Camera ON - Left dekho to Left'">ON</button><p id="e6"></p></div>
-
-<div class="vault" style="border-color:red"><b style="color:red">7. Jhooth Detector 🔴</b><br><button class="main" onclick="let x=document.getElementById('l7');x.style.background='red';x.innerText='JHOOTH';setTimeout(()=>{x.style.background='green';x.innerText='SACH'},1500)">Check</button><div id="l7" style="height:20px;background:green;border-radius:10px;margin-top:8px;text-align:center"></div></div>
-
-<div class="vault" style="border-color:red"><b style="color:red">8. Aakhri Internet</b><br><button class="main" onclick="alert('Offline Save Ho Gaya')">Save Offline</button></div>
-
-<div class="vault" style="border-color:red"><b style="color:red">9. Bhagwan Switch</b><br><button class="main" onclick="alert('Haath hilao - flash jalega')">Haath Hilao</button></div>
-
-<div class="vault" style="border-color:red"><b style="color:red">10. Aakhri 5 Sec Backup</b><br><button class="main" onclick="alert('Backup ON')">Backup ON</button></div>
-</div>
-<!-- ===== 10 FUTURE END ===== -->
-
-<!-- ALL OLD TOOLS -->
-<div class="vault">
-<div style="color:var(--gold);font-size:11px;letter-spacing:2px;margin-bottom:10px">ALL FEATURES</div>
-<a class="btn" href="password.html">🔐 Password Checker</a>
-<a class="btn" href="calc.html">🧮 Calculator</a>
-<a class="btn" href="qr.html">📱 QR Generator</a>
-<a class="btn" href="todo.html">📝 To-Do List</a>
-<a class="btn" href="weather.html">⛅ Weather App</a>
-<a class="btn" href="clock.html">⏰ Clock</a>
-<a class="btn" href="age.photo.html">📸 Age Photo Tool</a>
-<a class="btn" href="dev-gold.html">💰 Dev Gold</a>
+<div class="dock">
+<div onclick="location.href='https://www.google.com'">🏠</div>
+<div onclick="openApp('https://www.youtube.com')">▶️</div>
+<div onclick="openApp('https://www.google.com/search?q=')">🔍</div>
+<div onclick="openApp('https://web.whatsapp.com')">💬</div>
+<div>👤</div>
 </div>
 
 <script>
-function check(){let v=p.value,r=document.getElementById('r');if(v.length<4){r.innerHTML='❌ Bahut Kamzor';r.style.color='red';return}if(v.length<8){r.innerHTML='⚠️ Medium';r.style.color='orange';return}if(v.match(/[A-Z]/)&&v.match(/[0-9]/)&&v.match(/[^A-Za-z0-9]/)){r.innerHTML='✅ Strong Hai Boss!';r.style.color='#0f0'}else{r.innerHTML='😐 Aur Strong Kar';r.style.color='yellow'}}
-function toggleMode(){document.body.classList.toggle('light')}
-function askNotify(){Notification.requestPermission().then(p=>{if(p=='granted'){new Notification('Devaram App','{body:"Welcome to Devaram Official 👑"}')}})}
-function shareApp(){if(navigator.share){navigator.share({title:'Devaram App',text:'Devaram Official App Download Karo 👑',url:location.href})}else{shareWA()}}
-function shareWA(){window.open('https://wa.me/?text='+encodeURIComponent('Devaram App Download Karo 👑 '+location.href))}
-function shareAny(){shareApp()}
-function copyRefer(){navigator.clipboard.writeText(document.getElementById('referLink').value);alert('Link Copied! Ab WhatsApp pe share karo');shareWA()}
-function downloadAPK(){alert('APK Download Jaldi Aayega! Abhi Install App pe click karke Phone me Install Karo');}
-function mp3(){let link=document.getElementById('yt').value;if(!link)return alert('Link dalo');document.getElementById('mp3r').innerHTML='🔗 Tera MP3 Ready Hai:<br><a class="btn" target="_blank" href="https://loader.to/en2/?url='+encodeURIComponent(link)+'">⬇️ Download MP3 Now</a>';}
-function loadImg(e){let img=document.getElementById('photoPreview');img.src=URL.createObjectURL(e.target.files[0]);img.style.display='block';}
-function filterImg(f){document.getElementById('photoPreview').style.filter=f}
-function calcAge(){let dob=new Date(document.getElementById('dob').value);let diff=Date.now()-dob.getTime();let age=new Date(diff);document.getElementById('ageR').innerHTML='Teri Age Hai: '+(age.getUTCFullYear()-1970)+' Saal';}
+function openApp(url){ window.open(url, '_blank'); }
+function filterApps(){ let q=document.getElementById('search').value.toLowerCase(); document.querySelectorAll('.app').forEach(a=>{ a.style.display=a.innerText.toLowerCase().includes(q)?'block':'none' }) }
+function startVoice(){
+  let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SpeechRecognition){ alert('Is browser me voice support nahi hai, Chrome me khol'); return; }
+  let rec = new SpeechRecognition();
+  rec.lang='hi-IN';
+  rec.start();
+  document.getElementById('voice').innerText='Sun raha hu... Bolo YouTube kholo';
+  rec.onresult=(e)=>{
+    let t=e.results[0][0].transcript.toLowerCase();
+    document.getElementById('voice').innerText='Tune bola: '+t;
+    if(t.includes('youtube')) openApp('https://www.youtube.com');
+    else if(t.includes('google')) openApp('https://www.google.com');
+    else if(t.includes('insta')) openApp('https://www.instagram.com');
+    else if(t.includes('whatsapp')) openApp('https://web.whatsapp.com');
+    else if(t.includes('gmail')||t.includes('mail')) openApp('https://mail.google.com');
+    else openApp('https://www.google.com/search?q='+t);
+  }
+}
 </script>
 </body>
 </html>
