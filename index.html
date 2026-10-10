@@ -3,49 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DEVA PLAY STORE - All Apps Inside</title>
-<link rel="manifest" href="manifest.json">
+<title>DEVA SUPER APP</title>
 <style>
-body{margin:0;background:#000;color:#fff;font-family:sans-serif}
-.top{position:sticky;top:0;z-index:99;background:#111;padding:10px;border-bottom:2px solid gold;display:flex;gap:8px;overflow:auto}
-.top button{padding:10px 16px;border-radius:20px;border:1px solid gold;background:#222;color:#fff;white-space:nowrap}
-.top button.active{background:gold;color:#000;font-weight:bold}
-.search{width:92%;margin:10px 4%;padding:14px;border-radius:25px;border:1px solid gold;background:#151515;color:#fff}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:10px}
-.app{background:#151515;border-radius:18px;padding:10px 4px;text-align:center;border:1px solid #222}
+body{margin:0;background:#000;color:#fff;font-family:sans-serif;padding-bottom:20px}
+.top{position:sticky;top:0;z-index:99;background:#000;padding:10px;display:flex;gap:8px;overflow:auto;border-bottom:1px solid #222}
+.top button{padding:9px 16px;border-radius:20px;border:1.5px solid #FFD700;background:#000;color:#fff;white-space:nowrap;font-weight:bold}
+.top button.active{background:#FFD700;color:#000}
+.search{width:92%;margin:10px 4%;padding:14px;border-radius:25px;border:1px solid #333;background:#151515;color:#fff;outline:none;font-size:15px}
+.addBox{margin:12px;padding:14px;border:1.5px dashed #FFD700;border-radius:14px;background:#111}
+.addBox input{width:92%;padding:13px;margin:6px 0;border-radius:10px;border:1px solid #444;background:#000;color:#fff;display:block;font-size:15px}
+.addBox button{width:100%;padding:13px;background:#FFD700;border:none;border-radius:10px;font-weight:bold;color:#000;font-size:16px;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:12px}
+.app{background:#151515;border-radius:18px;padding:12px 4px;text-align:center;border:1px solid #222}
+.app:active{transform:scale(0.9)}
 .app img{width:48px;height:48px;border-radius:12px;background:#fff}
-.app span{display:block;font-size:10px;margin-top:5px}
-h3{color:gold;padding:0 12px;margin:15px 0 5px 0}
-#playstoreFrame{width:100%;height:85vh;border:none;background:#fff;display:none;border-radius:12px}
-.addBox{margin:12px;padding:12px;border:1px dashed gold;border-radius:12px}
-.addBox input{width:60%;padding:10px;border-radius:10px;border:1px solid gold;background:#222;color:#fff}
-.addBox button{padding:10px 15px;background:gold;border:none;border-radius:10px;font-weight:bold}
+.app span{font-size:12px;display:block;margin-top:6px}
+h3{color:#FFD700;padding:0 12px;margin:18px 0 5px 0}
+#playstoreFrame{width:100%;height:85vh;border:none;background:#fff;display:none}
 </style>
 </head>
 <body>
 
-<div class="top">
-<button class="active" onclick="showTab('all',this)">🏠 SAB APP</button>
-<button onclick="showTab('playstore',this)">▶️ PURA PLAY STORE</button>
-<button onclick="openLink('https://play.google.com/store')">🛒 Play Store Kholo</button>
-<button onclick="openLink('https://www.youtube.com')">YouTube</button>
-<button onclick="openLink('https://instagram.com')">Insta</button>
-<button onclick="openLink('https://facebook.com')">FB</button>
-<button onclick="openLink('https://web.whatsapp.com')">WhatsApp</button>
+<div style="padding:14px 12px 0 12px;display:flex;justify-content:space-between">
+<b style="font-size:24px">devaram</b>
+<span style="background:#0055ff;padding:6px 10px;border-radius:8px">🛡️</span>
 </div>
 
-<input class="search" id="search" placeholder="🔍 Koi bhi app dhoondo - Ludo, Paytm, Insta..." oninput="filterApps()">
+<div class="top">
+<button class="active" onclick="showHome(this)">🏠 Home</button>
+<button onclick="openLink('https://www.google.com')">Google</button>
+<button onclick="openLink('https://www.youtube.com')">YouTube</button>
+<button onclick="openLink('https://www.instagram.com')">Insta</button>
+<button onclick="openLink('https://m.facebook.com')">FB</button>
+<button onclick="openLink('https://web.whatsapp.com')">WhatsApp</button>
+<button onclick="showPlayStore(this)">▶️ Play Store</button>
+</div>
 
-<!-- PURA PLAY STORE YAHAN KHULEGA -->
+<input class="search" id="search" placeholder="🔍 Koi bhi app dhoondo..." oninput="filterApps()">
+
 <iframe id="playstoreFrame"></iframe>
+
 <div id="mainContent">
 
 <div class="addBox">
-<b style="color:gold">📱 Tere Phone Ka Koi Bhi App Jod</b><br><br>
+<b style="color:#FFD700">📱 Tere Phone Ka Koi Bhi App Jod - 100% Chalega</b><br><br>
 <input id="appName" placeholder="App ka naam - jaise BGMI">
-<input id="appLink" placeholder="Link - play.google.com/...">
+<input id="appLink" placeholder="Link khali chodega to bhi chalega">
 <button onclick="addMyApp()">+ Jodo</button>
-<p style="font-size:11px;color:#888">Jaise tu BGMI likhega to wo niche jud jayega. Aise 100 app jod sakta hai!</p>
+<p style="font-size:11px;color:#888;margin:8px 0 0 0">Sirf naam likh ke Jodo dabao, niche aa jayega aur hamesha rahega!</p>
 </div>
 
 <h3>🔥 Sabse Zyada Use Wale</h3>
@@ -57,53 +62,97 @@ h3{color:gold;padding:0 12px;margin:15px 0 5px 0}
 <div class="app" onclick="openLink('https://web.whatsapp.com')"><img src="https://www.google.com/s2/favicons?domain=whatsapp.com&sz=128"><span>WhatsApp</span></div>
 <div class="app" onclick="openLink('https://www.snapchat.com')"><img src="https://www.google.com/s2/favicons?domain=snapchat.com&sz=128"><span>Snapchat</span></div>
 <div class="app" onclick="openLink('https://telegram.org')"><img src="https://www.google.com/s2/favicons?domain=telegram.org&sz=128"><span>Telegram</span></div>
-<div class="app" onclick="openLink('https://twitter.com')"><img src="https://www.google.com/s2/favicons?domain=twitter.com&sz=128"><span>X / Twitter</span></div>
+<div class="app" onclick="openLink('https://twitter.com')"><img src="https://www.google.com/s2/favicons?domain=twitter.com&sz=128"><span>X</span></div>
 </div>
 
-<h3>🛒 Play Store Ke Andar Ke App - Sab Yahan Hai</h3>
-<div class="grid" id="gridAll">
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.paytm')"><img src="https://www.google.com/s2/favicons?domain=paytm.com&sz=128"><span>Paytm</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=net.one97.paytm')"><img src="https://www.google.com/s2/favicons?domain=phonepe.com&sz=128"><span>PhonePe</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.whatsapp')"><img src="https://www.google.com/s2/favicons?domain=whatsapp.com&sz=128"><span>WhatsApp</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.instagram.android')"><img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=128"><span>Insta App</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.facebook.katana')"><img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=128"><span>Facebook App</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.zhiliaoapp.musically')"><img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=128"><span>TikTok</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.ludo.king')"><img src="https://www.google.com/s2/favicons?domain=ludoking.com&sz=128"><span>Ludo King</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.supercell.clashofclans')"><img src="https://www.google.com/s2/favicons?domain=supercell.com&sz=128"><span>COC</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.dts.freefiremax')"><img src="https://www.google.com/s2/favicons?domain=freefire.com&sz=128"><span>Free Fire</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.pubg.imobile')"><img src="https://www.google.com/s2/favicons?domain=pubg.com&sz=128"><span>BGMI / PUBG</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.amazon.mShop.android.shopping')"><img src="https://www.google.com/s2/favicons?domain=amazon.in&sz=128"><span>Amazon</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.flipkart.android')"><img src="https://www.google.com/s2/favicons?domain=flipkart.com&sz=128"><span>Flipkart</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=in.swiggy.android')"><img src="https://www.google.com/s2/favicons?domain=swiggy.com&sz=128"><span>Swiggy</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.intsig.camscanner')"><img src="https://www.google.com/s2/favicons?domain=camscanner.com&sz=128"><span>Scanner</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.truecaller')"><img src="https://www.google.com/s2/favicons?domain=truecaller.com&sz=128"><span>Truecaller</span></div>
-<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.hotstar')"><img src="https://www.google.com/s2/favicons?domain=hotstar.com&sz=128"><span>Hotstar</span></div>
+<h3>🛒 Play Store Ke App</h3>
+<div class="grid">
+<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.paytm')"><span>Paytm</span></div>
+<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.phonepe.app')"><span>PhonePe</span></div>
+<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.whatsapp')"><span>WhatsApp App</span></div>
+<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.instagram.android')"><span>Insta App</span></div>
+<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.ludo.king')"><span>Ludo King</span></div>
+<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.dts.freefiremax')"><span>Free Fire</span></div>
+<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.pubg.imobile')"><span>BGMI</span></div>
+<div class="app" onclick="openLink('https://play.google.com/store/apps/details?id=com.amazon.mShop.android.shopping')"><span>Amazon</span></div>
 </div>
 
-<h3>📱 Tere Jode Hue App</h3>
+<h3 style="color:#00ff88">📱 Tere Jode Hue App - Yahan 100% Ayenge</h3>
 <div class="grid" id="myApps"></div>
 
 </div>
 
 <script>
-let myAppsList = JSON.parse(localStorage.getItem('deva_myapps')||'[]');
-function renderMyApps(){let g=document.getElementById('myApps');g.innerHTML='';myAppsList.forEach(a=>{g.innerHTML+=`<div class="app" onclick="openLink('${a.link}')"><img src="https://www.google.com/s2/favicons?domain=${a.link}&sz=128"><span>${a.name}</span></div>`})}
-renderMyApps();
-function openLink(url){window.open(url,'_blank')}
-function showTab(tab,btn){
- document.querySelectorAll('.top button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
- let frame=document.getElementById('playstoreFrame');let main=document.getElementById('mainContent');
- if(tab=='playstore'){frame.style.display='block';main.style.display='none';frame.src='https://play.google.com/store';}
- else{frame.style.display='none';main.style.display='block';}
+var myAppsList = JSON.parse(localStorage.getItem('deva_myapps') || '[]');
+
+function openLink(url){ window.open(url, '_blank'); }
+
+function showPlayStore(btn){
+ document.querySelectorAll('.top button').forEach(function(b){b.classList.remove('active')});
+ btn.classList.add('active');
+ document.getElementById('playstoreFrame').style.display='block';
+ document.getElementById('mainContent').style.display='none';
+ document.getElementById('playstoreFrame').src='https://play.google.com/store';
 }
-function filterApps(){let q=document.getElementById('search').value.toLowerCase();document.querySelectorAll('.app').forEach(a=>{a.style.display=a.innerText.toLowerCase().includes(q)?'block':'none'})}
+
+function showHome(btn){
+ document.querySelectorAll('.top button').forEach(function(b){b.classList.remove('active')});
+ btn.classList.add('active');
+ document.getElementById('playstoreFrame').style.display='none';
+ document.getElementById('mainContent').style.display='block';
+}
+
+function filterApps(){
+ var q=document.getElementById('search').value.toLowerCase();
+ document.querySelectorAll('.app').forEach(function(a){
+  a.style.display = a.innerText.toLowerCase().includes(q)? '' : 'none';
+ });
+}
+
+function renderMyApps(){
+ var g=document.getElementById('myApps');
+ g.innerHTML='';
+ if(myAppsList.length==0){
+  g.innerHTML='<p style="color:#666;font-size:12px;padding:10px">Abhi koi app nahi joda. Upar se jodo!</p>';
+  return;
+ }
+ for(var i=0;i<myAppsList.length;i++){
+  var a=myAppsList[i];
+  g.innerHTML += '<div class="app"><div onclick="window.open(\''+a.link+'\',\'_blank\')"><img src="https://www.google.com/s2/favicons?domain='+a.link+'&sz=64"><span>'+a.name+'</span></div><small onclick="delApp('+i+')" style="color:red;font-size:10px">❌ Hatao</small></div>';
+ }
+}
+
 function addMyApp(){
- let n=document.getElementById('appName').value;let l=document.getElementById('appLink').value;
- if(!n||!l){alert('Naam aur Link dono daal');return;}
- myAppsList.push({name:n,link:l});localStorage.setItem('deva_myapps',JSON.stringify(myAppsList));renderMyApps();
- document.getElementById('appName').value='';document.getElementById('appLink').value='';
- alert(n+' jud gaya! Ab hamesha rahega');
+ var nameEl=document.getElementById('appName');
+ var linkEl=document.getElementById('appLink');
+ var nameV=nameEl.value.trim();
+ var linkV=linkEl.value.trim();
+
+ if(nameV==''){ alert('Pehle App ka naam likh - jaise BGMI'); return; }
+
+ if(linkV==''){
+  linkV='https://play.google.com/store/search?q='+encodeURIComponent(nameV)+'&c=apps';
+ } else {
+  if(linkV.indexOf('http')!==0) linkV='https://'+linkV;
+ }
+
+ myAppsList.push({name:nameV, link:linkV});
+ localStorage.setItem('deva_myapps', JSON.stringify(myAppsList));
+ renderMyApps();
+ nameEl.value=''; linkEl.value='';
+ alert(nameV+' jud gaya ✅ Ab niche dekho!');
+ document.getElementById('myApps').scrollIntoView({behavior:'smooth'});
 }
+
+function delApp(i){
+ if(confirm('Hatana hai?')){
+  myAppsList.splice(i,1);
+  localStorage.setItem('deva_myapps', JSON.stringify(myAppsList));
+  renderMyApps();
+ }
+}
+
+renderMyApps();
 </script>
 </body>
-</html>
+ </html>
